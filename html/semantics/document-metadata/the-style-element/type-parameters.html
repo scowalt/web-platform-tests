@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MIME type parameters for the style element</title>
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <style type="text/css;foo=bar">
+      #test1 {
+        width: 100px;
+      }
+    </style>
+    <style type="text/css;charset=UTF-8">
+      #test2 {
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="log"></div>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <script>
+      test(function() {
+        var element1 = document.getElementById("test1");
+        var width1 = window.getComputedStyle(element1)["width"];
+        assert_not_equals(width1, "100px", "The style should not be applied.");
+      }, "Types with unknown parameters are not unsupported");
+      test(function() {
+        var element2 = document.getElementById("test2");
+        var height2 = window.getComputedStyle(element2)["height"];
+        assert_not_equals(height2, "100px", "The style should not be applied.");
+      }, "The charset parameter is treated as an unknown parameter for the purpose of comparing MIME types");
+    </script>
+  </body>
+</html>
