@@ -22,7 +22,7 @@ var tText = async_test("Should get an error event for a text/plain response.")
 tText.step(function() {
   var elt = document.createElement("style");
   elt.onerror = tText.step_func(function() {
-    assert_true(true, "Got error event for 404 error.")
+    assert_true(true, "Got error event for text/plain response.")
     tText.done()
   })
   elt.appendChild(

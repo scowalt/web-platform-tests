@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The style element and subresource loading</title>
+    <script src="/resources/testharness.js"></script>
+    <script src="/resources/testharnessreport.js"></script>
+    <style id="style1">
+      /* Delayed load */
+      @import url("/common/canvas-tests.css?pipe=trickle(d2)");
+
+      /* Error in loading */
+      @import url("/resources/testharness.css?pipe=status(404)");
+    </style>
+    <script>
+        style1.onload = function() {
+          style1.loadevt = true;
+        }();
+        
+        style1.onerror = function() {
+          style1.errorevt = true;
+        }();
+
+        var tStyleLoad = async_test("The document load event is delayed until all attempts to obtain the style element's critical subresources are complete");
+
+        document.onload = tStyleLoad.step_func(function() {
+          assert_true(style1.loadevt && style1.errorevt, "Load event: " + style1.loadevt + "; Error event: " + style1.errorevt + ".");
+          tStyleLoad.done();
+        })();
+    </script>
+  </head>
+  <body>
+    <div id="log"></div>
+  </body>
+</html>

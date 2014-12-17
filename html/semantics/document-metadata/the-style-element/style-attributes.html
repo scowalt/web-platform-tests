@@ -31,8 +31,6 @@
         assert_equals(document.styleSheetSets[0], "alternate1", "Alternate stylesheet was not reconized as such");
       }, "The title attribute defines an alternative style sheet");
       test(function() {
-        var test2 = document.getElementById("test2");
-        var test3 = document.getElementById("test3");
         assert_equals(test2.media, "", "Omitted media value was not IDL reflected as empty string");
         assert_equals(test2.type, "", "Omitted type value was not IDL reflected as empty string");
         assert_equals(test3.media, "all", "Assigned (and valid) media value was not IDL reflected");
