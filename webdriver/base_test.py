@@ -52,7 +52,7 @@ def create_driver():
     elif section == 'chrome':
         driver = webdriver.Chrome(chromeDriverExecutablePath)
     elif section == 'edge':
-        driver = webdriver.Remote()
+        driver = webdriver.Remote('http://localhost:17556/', {'browser': 'edge'})
     elif section == 'ie':
         driver = webdriver.Ie()
     elif section == 'selendroid':
