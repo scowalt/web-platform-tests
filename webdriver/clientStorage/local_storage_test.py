@@ -13,8 +13,8 @@ class LocalStorageTest(base_test.WebDriverBaseTest):
         self.driver.execute(cmd.Command.SET_LOCAL_STORAGE_ITEM, {'key': 'a', 'value': 'b'})
         val = self.driver.execute(cmd.Command.GET_LOCAL_STORAGE_ITEM, {'key': 'a'})
         self.assertEquals("b", val['value'])
-        self.driver.execute_script("localStorage.getItem('a');")
-        self.assertEquals("b", val['value'])
+        val = self.driver.execute_script("return localStorage.getItem('a');")
+        self.assertEquals("b", val)
 
     def test_clear(self):
         self.driver.get(self.webserver.where_is("ecmascript/res/ecmascript_test.html"))
