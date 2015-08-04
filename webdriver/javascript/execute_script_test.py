@@ -8,6 +8,18 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 class ExecuteScriptTest(base_test.WebDriverBaseTest):
+
+    def test_arguments(self):
+        self.driver.get(self.webserver.where_is("javascript/res/return_document_body.html"))
+        body = self.driver.execute_script("return document.body;")
+        result = self.driver.execute_script("return {a: arguments[0], b: arguments[1]};", 456, "asdf")
+        self.assertDictEqual({
+            "a": 456,
+            "b": "asdf"
+        }, result)
+        result = self.driver.execute_script("return arguments[0].textContent;", body)
+        self.assertEquals(result, "Hello, world!\n")
+
     def test_ecmascript_translates_null_return_to_none(self):
         self.driver.get(self.webserver.where_is("javascript/res/execute_script_test.html"))
         result = self.driver.execute_script("return null;")
