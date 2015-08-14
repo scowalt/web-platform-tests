@@ -5,6 +5,7 @@ import unittest
 sys.path.insert(1, os.path.abspath(os.path.join(__file__, "../..")))
 import base_test
 from selenium.webdriver.remote.webelement import WebElement
+import selenium.common.exceptions as ex
 
 
 class ExecuteScriptTest(base_test.WebDriverBaseTest):
@@ -135,6 +136,14 @@ class ExecuteScriptTest(base_test.WebDriverBaseTest):
         self.driver.get(self.webserver.where_is("javascript/res/execute_script_test.html"))
         result = self.driver.execute_script("return document.title;")
         self.assertEquals("executeScript test", result)
+
+    def test_script_error(self):
+        try:
+            self.driver.get(self.webserver.where_is("javascript/res/execute_script_test.html"))
+            result = self.driver.execute_script("return invalidVariableName.title;")
+            self.fail()
+        except ex.WebDriverException, e:
+            self.assertTrue(e.msg.find("invalidVariableName") != -1, e.msg)
 
 
 if __name__ == "__main__":
