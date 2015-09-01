@@ -108,11 +108,6 @@ class ExecuteScriptTest(base_test.WebDriverBaseTest):
         self.assertIsInstance(result, dict)
         self.assertEquals("body", result["a"].tag_name)
 
-    def test_scripts_execute_in_anonymous_function_and_do_not_pollute_global_scope(self):
-        self.driver.get(self.webserver.where_is("javascript/res/execute_script_test.html"))
-        self.driver.execute_script("var x = 1;")
-        self.assertEquals("undefined", self.driver.execute_script("return typeof x;"));
-
     def test_scripts_can_modify_context_window_object(self):
         self.driver.get(self.webserver.where_is("javascript/res/execute_script_test.html"))
         self.driver.execute_script("window.x = 1;")

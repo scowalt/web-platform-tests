@@ -14,23 +14,6 @@ class CookieTest(base_test.WebDriverBaseTest):
     def test_can_create_a_well_formed_cookie( self ):
         self.driver.add_cookie({'name': 'foo', 'value': 'bar'})
 
-    def test_cookies_should_allow_secure_to_be_set( self ):
-        name = 'foo'
-        self.driver.add_cookie({'name': name,
-                                'value': 'bar',
-                                'path': '/',
-                                'secure': (True)})
-        self.assertTrue(self.driver.get_cookie(name)[0]['secure'])
-
-    def test_secure_defaults_to_false( self ):
-        name = 'foo'
-        value = 'bar'
-
-        self.driver.add_cookie({ 'name': name,
-                                 'value': value})
-
-        self.assertFalse(self.driver.get_cookie(name)[0]['secure'])
-
     def test_should_throw_an_exception_when_semicolon_exists_in_the_cookie_attribute(self):
         invalid_name = 'foo;bar'
         try:

@@ -21,11 +21,6 @@ class GetElementAttributeTest(base_test.WebDriverBaseTest):
                          """
         self.assertEqual(expected_style, el.get_attribute("style"))
 
-    def test_color_serialization_of_style_attribute(self):
-        self.driver.get(self.webserver.where_is("element_state/res/element-with-color-style-attribute.html"))
-        el = self.driver.find_element_by_css_selector("div")
-        self.assertEqual("color: rgba(255, 0, 0, 1.0);", el.get_attribute("style"))
-
     def test_true_if_boolean_attribute_present(self):
         self.driver.get(self.webserver.where_is("element_state/res/input-with-checked-attribute.html"))
         el = self.driver.find_element_by_css_selector("input")

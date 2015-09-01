@@ -13,7 +13,6 @@ class GetFromHttpTest(base_test.WebDriverBaseTest):
         url = self.driver.current_url
         self.assertEquals(page, url)
 
-
     def testGetWillFollowTheLocationHeader(self):
         page = self.webserver.where_is('navigation/redirect')
         self.driver.get(page)
@@ -21,14 +20,12 @@ class GetFromHttpTest(base_test.WebDriverBaseTest):
         url = self.driver.current_url
         self.assertEquals(expected, url)
 
-
     def testGetWillFollowMetaRefreshThatRefreshesInstantly(self):
         page = self.webserver.where_is('navigation/res/instant-meta-redirect.html')
         self.driver.get(page)
         expected = self.webserver.where_is('navigation/res/empty.html')
         url = self.driver.current_url
         self.assertEquals(expected, url)
-
 
     def testGetWillFollowMetaRefreshThatRefreshesAfterOneSecond(self):
         page = self.webserver.where_is('navigation/res/1s-meta-redirect.html')
@@ -43,18 +40,6 @@ class GetFromHttpTest(base_test.WebDriverBaseTest):
         self.driver.get(page)
         url = self.driver.current_url
         self.assertEquals(page, url)
-
-
-    def testGetFragmentInCurrentDocumentDoesNotReloadPage(self):
-        page = self.webserver.where_is("navigation/res/fragment.html")
-        fragment_page = "%s#%s" % (page, "fragment")
-
-        self.driver.get(page)
-        self.driver.execute_script("state = true")
-
-        self.driver.get(fragment_page)
-        self.assertEquals(True, self.driver.execute_script("return state"))
-
 
 if __name__ == '__main__':
     unittest.main()
