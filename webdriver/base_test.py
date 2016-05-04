@@ -33,6 +33,7 @@ def create_driver():
     config = ConfigParser.ConfigParser()
     config.read('webdriver.cfg')
     section = os.environ.get("WD_BROWSER", 'firefox')
+    chromeDriverExecutablePath = os.environ.get("CHROME_DRIVER_EXECUTABLE_PATH", 'chromedriver')
     if config.has_option(section, 'url'):
         url = config.get(section, "url")
     else:
@@ -49,9 +50,9 @@ def create_driver():
     if section == 'firefox':
         driver = webdriver.Firefox()
     elif section == 'chrome':
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(chromeDriverExecutablePath)
     elif section == 'edge':
-        driver = webdriver.Remote()
+        driver = webdriver.Remote('http://localhost:17556/', {'browser': 'edge'})
     elif section == 'ie':
         driver = webdriver.Ie()
     elif section == 'selendroid':
