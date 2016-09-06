@@ -1,10 +1,10 @@
 var xhr = new XMLHttpRequest;
-xhr.onerror = function () {
+xhr.onerror = function() {
     postMessage("xhr blocked");
     postMessage("TEST COMPLETE");
 };
-xhr.onload = function () {
-    //cons/**/ole.log(xhr.responseText);
+xhr.onload = function() {
+    // cons/**/ole.log(xhr.responseText);
     if (xhr.responseText == "FAIL") {
         postMessage("xhr allowed");
     } else {

@@ -1,1 +1,1 @@
-test(function() { assert_unreached("FAIL")});
+test(function() { assert_unreached("FAIL");});

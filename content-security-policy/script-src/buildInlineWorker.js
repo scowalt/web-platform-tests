@@ -1,4 +1,4 @@
-(function ()
+(function()
 {
     var workerSource = document.getElementById('inlineWorker');
     var blob = new Blob([workerSource.textContent]);
