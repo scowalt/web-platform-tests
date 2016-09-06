@@ -9,21 +9,21 @@
     <h1>Audio element src attribute must match src list - positive test</h1>
     <div id='log'></div>
 
-  <script>
-    var src_test = async_test("In-policy audio src");
-    var source_test = async_test("In-policy audio source element");
+    <script>
+        var src_test = async_test("In-policy audio src");
+        var source_test = async_test("In-policy audio source element");
 
-    function media_loaded(t) {
-      t.done();
-    }
+        function media_loaded(t) {
+            t.done();
+        }
 
-    function media_error_handler(t) {
-      t.step( function () {
-          assert_unreached("Media error handler should be triggered for non-allowed domain.");
-      });
-      t.done();
-    }
-  </script>
+        function media_error_handler(t) {
+            t.step( function () {
+                assert_unreached("Media error handler should be triggered for non-allowed domain.");
+            });
+            t.done();
+        }
+    </script>
 
     <audio id="audioObject" width="320" height="240" controls
            onloadeddata="media_loaded(source_test)">

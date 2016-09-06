@@ -1,3 +1,3 @@
 (function () {
-   allowedScriptRan = true;
+    allowedScriptRan = true;
 })();

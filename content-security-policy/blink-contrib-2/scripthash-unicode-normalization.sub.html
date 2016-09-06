@@ -21,44 +21,44 @@ script-src 'self' 'nonce-nonceynonce' 'sha256-dWTP4Di8KBjaiXvQ5mRquI9OoBSo921ahY
         against the spec. This test, therefore, validates that the scripts have
         *different* hash values. -->
     <script nonce="nonceynonce">
-      var matchingContent = 'Å';
-      var nonMatchingContent = 'Å';
+        var matchingContent = 'Å';
+        var nonMatchingContent = 'Å';
 
-      // This script should have a hash value of
-      // sha256-9UFeeZbvnMa0tLNu76v96T4Hh+UtDWHm2lPQJoTWb9c=
-      var scriptContent1 = "window.finish('" + matchingContent + "');";
+        // This script should have a hash value of
+        // sha256-9UFeeZbvnMa0tLNu76v96T4Hh+UtDWHm2lPQJoTWb9c=
+        var scriptContent1 = "window.finish('" + matchingContent + "');";
 
-      // This script should have a hash value of
-      // sha256-iNjjXUXds31FFvkAmbC74Sxnvreug3PzGtu16udQyqM=
-      var scriptContent2 = "window.finish('" + nonMatchingContent + "');";
+        // This script should have a hash value of
+        // sha256-iNjjXUXds31FFvkAmbC74Sxnvreug3PzGtu16udQyqM=
+        var scriptContent2 = "window.finish('" + nonMatchingContent + "');";
 
-      var script1 = document.createElement('script');
-      var script2 = document.createElement('script');
+        var script1 = document.createElement('script');
+        var script2 = document.createElement('script');
 
-      script1.test = async_test("Only matching content runs even with NFC normalization.");
+        script1.test = async_test("Only matching content runs even with NFC normalization.");
 
-      var failure = function() {
-        assert_unreached();
-      }
-
-      window.finish = function(content) {
-        if (content == matchingContent) {
-          script1.test.step(function() {
-            script1.test.done();
-          });
-        } else {
-	  script1.test.step(function() {
-            assert_unreached("nonMatchingContent script ran");
-	  });
+        var failure = function() {
+            assert_unreached();
         }
-      }
 
-      script1.onerror = failure;
+        window.finish = function(content) {
+            if (content == matchingContent) {
+                script1.test.step(function() {
+                    script1.test.done();
+                });
+            } else {
+                script1.test.step(function() {
+                    assert_unreached("nonMatchingContent script ran");
+                });
+            }
+        }
 
-      document.body.appendChild(script2);
-      script2.textContent = scriptContent2;
-      document.body.appendChild(script1);
-      script1.textContent = scriptContent1;
+        script1.onerror = failure;
+
+        document.body.appendChild(script2);
+        script2.textContent = scriptContent2;
+        document.body.appendChild(script1);
+        script1.textContent = scriptContent1;
     </script>
 
     <p>

@@ -15,23 +15,23 @@
     causes the redirect to be done in a fetch context to which connect-src is being applied instead, so
     the load is blocked. (This test passes in Firefox 45, modulo an event listener not firing.)</p>
 
-  <script>
-    var src_test = async_test("In-policy async video src");
-    var src_redir_test = async_test("in-policy async video src w/redir")
-    var source_test = async_test("In-policy async video source element");
-    var source_redir_test = async_test("In-policy async video source element w/redir");
+    <script>
+        var src_test = async_test("In-policy async video src");
+        var src_redir_test = async_test("in-policy async video src w/redir")
+        var source_test = async_test("In-policy async video source element");
+        var source_redir_test = async_test("In-policy async video source element w/redir");
 
-    function media_loaded(t) {
-      t.done();
-    }
+        function media_loaded(t) {
+            t.done();
+        }
 
-    function media_error_handler(t) {
-      t.step( function () {
-          assert_unreached("Media error handler shouldn't be triggered for allowed domain.");
-      });
-      t.done();
-    }
-  </script>
+        function media_error_handler(t) {
+            t.step( function () {
+                assert_unreached("Media error handler shouldn't be triggered for allowed domain.");
+            });
+            t.done();
+        }
+    </script>
 
     <video id="videoObject" width="320" height="240" controls
            onloadeddata="media_loaded(source_test)">

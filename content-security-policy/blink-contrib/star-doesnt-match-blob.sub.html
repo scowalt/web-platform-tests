@@ -24,8 +24,7 @@ connect-src 'self'; script-src 'self' 'unsafe-inline'; child-src *;
             var blob = new Blob([
                 "postMessage('FAIL');" +
                 "postMessage('TEST COMPLETE');"
-                ],
-                {type : 'application/javascript'});
+            ], {type : 'application/javascript'});
             var url = URL.createObjectURL(blob);
             var worker = new Worker(url);
             worker.onmessage = function(event) {

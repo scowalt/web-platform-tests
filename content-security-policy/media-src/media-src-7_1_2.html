@@ -10,29 +10,29 @@
     <h1>Video element src attribute must match src list - negative test</h1>
     <div id='log'></div>
 
-  <script>
-      var src_test = async_test("Disallowed async video src");
-      var source_test = async_test("Disallowed async video source element");
+    <script>
+        var src_test = async_test("Disallowed async video src");
+        var source_test = async_test("Disallowed async video source element");
 
-      // we assume tests are run from 'hostname' and 'www.hostname' or 'www2.hostname' is a valid alias
-      var mediaURL = location.protocol +
-        "//www2." +
-        location.hostname +
-        ":" +
-        location.port +
-        "/media/white.mp4";
+        // we assume tests are run from 'hostname' and 'www.hostname' or 'www2.hostname' is a valid alias
+        var mediaURL = location.protocol +
+            "//www2." +
+            location.hostname +
+            ":" +
+            location.port +
+            "/media/white.mp4";
 
-    function media_loaded(t) {
-      t.step( function () {
-          assert_unreached("Media error handler should be triggered for non-allowed domain.");
-      });
-      t.done();
-    }
+        function media_loaded(t) {
+            t.step(function () {
+                assert_unreached("Media error handler should be triggered for non-allowed domain.");
+            });
+            t.done();
+        }
 
-    function media_error_handler(t) {
-      t.done();
-    }
-  </script>
+        function media_error_handler(t) {
+            t.done();
+        }
+    </script>
 
     <video id="videoObject" width="320" height="240" controls
            onloadeddata="media_loaded(source_test)">
@@ -50,6 +50,5 @@
     </script>
 
     <script async defer src='../support/checkReport.sub.js?reportField=violated-directive&reportValue=media-src%20%27self%27'></script>
-
 </body>
 </html>
