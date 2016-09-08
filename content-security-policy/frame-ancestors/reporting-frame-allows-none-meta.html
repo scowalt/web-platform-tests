@@ -7,7 +7,7 @@
     <p>Reporting Frame...</p>
     <script>
         function onMessage(event) {
-            var p = document.createElement(p);
+            var p = document.createElement('p');
             p.textContent = event.data;
             document.body.appendChild(p);
             window.parent.postMessage(event.data, "*");

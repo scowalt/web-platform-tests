@@ -6,7 +6,7 @@ if (timeout === "") {
 }
 
 if (expected_logs.length === 0) {
-    window.log_assert = function(msg) {
+    window.log = function(msg) {
         test(function() {
             assert_unreached(msg);
         });
