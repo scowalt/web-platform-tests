@@ -16,6 +16,8 @@ script-src 'self' 'unsafe-inline' 'self'; report-uri resources/save-report.php?t
 <body>
     <script>
         try {
+            /* eslint no-eval: "off" */
+
             eval("alert_assert('FAIL')");
         } catch (e) {
             log('PASS: eval() blocked.');

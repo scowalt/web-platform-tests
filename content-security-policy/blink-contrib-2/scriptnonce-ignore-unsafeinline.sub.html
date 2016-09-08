@@ -9,7 +9,7 @@
     <script nonce='noncynonce'>
         function log(msg) {
             test(function() {
-                assert_unreached(msg)
+                assert_unreached(msg);
             });
         }
 
@@ -25,10 +25,10 @@
                     t_alert.done();
                 }
                 for (var i = 0; i < expected_alerts.length; i++) {
-                    if (expected_alerts[i] == msg) {
-                        assert_true(expected_alerts[i] == msg);
+                    if (expected_alerts[i] === msg) {
+                        assert_true(expected_alerts[i] === msg);
                         expected_alerts.splice(i, 1);
-                        if (expected_alerts.length == 0) {
+                        if (expected_alerts.length === 0) {
                             t_alert.done();
                         }
                         return;
@@ -44,20 +44,15 @@
 script-src 'self' 'unsafe-inline' 'nonce-noncynonce' 'nonce-noncy+/=nonce' 'unsafe-inline'; connect-src 'self';
 -->
     <script nonce="noncynonce">
-
-
     </script>
     <script nonce="noncynonce">
         alert_assert('PASS (1/2)');
-
     </script>
     <script nonce="noncy+/=nonce">
         alert_assert('PASS (2/2)');
-
     </script>
     <script>
         alert_assert('FAIL (1/1)');
-
     </script>
 </head>
 

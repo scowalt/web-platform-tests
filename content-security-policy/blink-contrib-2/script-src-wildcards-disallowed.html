@@ -40,8 +40,8 @@ script-src 'nonce-nonce' *; connect-src 'self';
 
         var t3 = async_test('filesystem URIs should not match *');
         if (window.webkitRequestFileSystem) {
-            window.webkitRequestFileSystem(TEMPORARY, 1024*1024 /*1MB*/, function(fs) {
-                fs.root.getFile('fail.js', {create: true}, function(fileEntry) {
+            window.webkitRequestFileSystem(TEMPORARY, /* 1MB = */ 1024 * 1024, function(fs) {
+                fs.root.getFile('fail.js', { create: true }, function(fileEntry) {
                     fileEntry.createWriter(function(fileWriter) {
                         var script = document.createElement('script');
 

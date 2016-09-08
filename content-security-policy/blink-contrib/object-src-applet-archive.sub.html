@@ -22,7 +22,7 @@ object-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
         for (var i = 0; i < len; i++) {
             allTypes += navigator.mimeTypes[i].type + ';';
         }
-        if (allTypes.indexOf(appletMimeType) == -1) {
+        if (allTypes.indexOf(appletMimeType) === -1) {
             t_log.set_status(t_log.NOTRUN, "No Java Plugin, cannot run test.");
             t_log.phase = t_log.phases.HAS_RESULT;
             t_log.done();

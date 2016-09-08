@@ -15,7 +15,7 @@ default-src 'self'; connect-src 'self';
     This test passes if the inline scripts don't create failing tests and a CSP report is sent.
     <script>
         test(function() {
-            assert_unreached('FAIL inline script ran')
+            assert_unreached('FAIL inline script ran');
         });
 
     </script>

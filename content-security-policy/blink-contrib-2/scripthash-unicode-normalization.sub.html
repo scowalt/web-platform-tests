@@ -39,10 +39,10 @@ script-src 'self' 'nonce-nonceynonce' 'sha256-dWTP4Di8KBjaiXvQ5mRquI9OoBSo921ahY
 
         var failure = function() {
             assert_unreached();
-        }
+        };
 
         window.finish = function(content) {
-            if (content == matchingContent) {
+            if (content === matchingContent) {
                 script1.test.step(function() {
                     script1.test.done();
                 });
@@ -51,7 +51,7 @@ script-src 'self' 'nonce-nonceynonce' 'sha256-dWTP4Di8KBjaiXvQ5mRquI9OoBSo921ahY
                     assert_unreached("nonMatchingContent script ran");
                 });
             }
-        }
+        };
 
         script1.onerror = failure;
 

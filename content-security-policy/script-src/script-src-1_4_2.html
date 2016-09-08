@@ -14,9 +14,10 @@
             assert_throws(
                 new EvalError(),
                 function() {
+                    /* eslint no-new-func: "off" */
                     var funq = new Function('');
                     funq();
-                })
+                });
         }, "Unsafe eval ran in Function() constructor.");
     </script>
 

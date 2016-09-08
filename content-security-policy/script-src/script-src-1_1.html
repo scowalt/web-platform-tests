@@ -11,7 +11,9 @@
     <div id='log'></div>
 
     <script>
-      t1.step(function() {assert_unreached('Unsafe inline script ran.');});
+        t1.step(function() {
+            assert_unreached('Unsafe inline script ran.');
+        });
     </script>
 
     <img src='doesnotexist.jpg' onerror='t2.step(function() { assert_unreached("Unsafe inline event handler ran.") });'>

@@ -9,13 +9,20 @@
     <h1>eval() should not run without 'unsafe-eval' script-src directive.</h1>
     <div id='log'></div>
 
-   	<script>
-
+    <script>
         var evalRan = false;
 
-        test(function() {assert_throws(new EvalError(), function() { eval('evalRan = true;') })}, "eval() should throw without 'unsafe-eval' keyword source in script-src directive.");
+        test(function() {
+            assert_throws(new EvalError(),
+                function() {
+                    /* eslint no-eval: "off" */
+                    eval('evalRan = true;');
+                });
+        }, "eval() should throw without 'unsafe-eval' keyword source in script-src directive.");
 
-        test(function() {assert_false(evalRan);})
+        test(function() {
+            assert_false(evalRan);
+        });
 
     </script>
 

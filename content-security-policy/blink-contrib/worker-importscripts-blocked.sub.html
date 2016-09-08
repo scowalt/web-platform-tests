@@ -23,14 +23,14 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' 'unsafe-inline' 127.0.0.1:8000; 
             worker.onmessage = function(event) {
                 result = event.data;
                 test(function() {
-                    assert_equals(result, 'importScripts blocked')
+                    assert_equals(result, 'importScripts blocked');
                 });
                 log("TEST COMPLETE");
             };
         } catch (e) {
             result = e;
             test(function() {
-                assert_equals(result, 'importScripts blocked')
+                assert_equals(result, 'importScripts blocked');
             });
             log("TEST COMPLETE");
         }

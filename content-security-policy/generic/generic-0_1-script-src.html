@@ -19,14 +19,16 @@
     <script src='pass-0_1.js'></script>
 
     <script>
-      var inlineScript = document.createElement('script');
-      inlineScript.src = buildSiblingPath('www1', 'fail-0_1.js');
-      document.getElementById('log').appendChild(inlineScript);
-      onload = function() {
-          scriptsrc1.done();
-          scriptsrc2.step( function() { assert_true(allowedScriptRan, "allowed script didn't run") });
-          scriptsrc2.done();
-      }
+        var inlineScript = document.createElement('script');
+        inlineScript.src = buildSiblingPath('www1', 'fail-0_1.js');
+        document.getElementById('log').appendChild(inlineScript);
+        onload = function() {
+            scriptsrc1.done();
+            scriptsrc2.step(function() {
+                assert_true(allowedScriptRan, "allowed script didn't run");
+            });
+            scriptsrc2.done();
+        };
     </script>
 
     <script async defer src='../support/checkReport.sub.js?reportField=violated-directive&reportValue=default-src%20%27self%27%20%27unsafe-inline%27'></script>

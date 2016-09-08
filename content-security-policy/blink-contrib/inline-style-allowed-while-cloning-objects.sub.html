@@ -30,40 +30,40 @@ style-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
             nodes.appendChild(node3);
             nodes.appendChild(node4);
             test(function() {
-                assert_equals(node1.style.background.match(/yellow/)[0], "yellow")
+                assert_equals(node1.style.background.match(/yellow/)[0], "yellow");
             });
             test(function() {
-                assert_equals(node2.style.background.match(/yellow/)[0], "yellow")
+                assert_equals(node2.style.background.match(/yellow/)[0], "yellow");
             });
             test(function() {
-                assert_equals(node3.style.background.match(/blue/)[0], "blue")
+                assert_equals(node3.style.background.match(/blue/)[0], "blue");
             });
             test(function() {
-                assert_equals(node4.style.background.match(/blue/)[0], "blue")
+                assert_equals(node4.style.background.match(/blue/)[0], "blue");
             });
             test(function() {
-                assert_equals(node1.style.color, "red")
+                assert_equals(node1.style.color, "red");
             });
             test(function() {
-                assert_equals(node2.style.color, "red")
+                assert_equals(node2.style.color, "red");
             });
             test(function() {
-                assert_equals(node3.style.color, "green")
+                assert_equals(node3.style.color, "green");
             });
             test(function() {
-                assert_equals(node4.style.color, "green")
+                assert_equals(node4.style.color, "green");
             });
             test(function() {
-                assert_equals(window.getComputedStyle(node1).background, window.getComputedStyle(node2).background)
+                assert_equals(window.getComputedStyle(node1).background, window.getComputedStyle(node2).background);
             });
             test(function() {
-                assert_equals(window.getComputedStyle(node3).background, window.getComputedStyle(node4).background)
+                assert_equals(window.getComputedStyle(node3).background, window.getComputedStyle(node4).background);
             });
             test(function() {
-                assert_equals(window.getComputedStyle(node1).color, window.getComputedStyle(node2).color)
+                assert_equals(window.getComputedStyle(node1).color, window.getComputedStyle(node2).color);
             });
             test(function() {
-                assert_equals(window.getComputedStyle(node3).color, window.getComputedStyle(node4).color)
+                assert_equals(window.getComputedStyle(node3).color, window.getComputedStyle(node4).color);
             });
             window.ops = document.getElementById('ops');
             ops.style.color = 'red';
@@ -72,37 +72,36 @@ style-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
             violetOps.style.background = 'rgb(238, 130, 238)';
             document.getElementsByTagName('body')[0].appendChild(clonedOps);
             test(function() {
-                assert_equals(ops.style.background, "")
+                assert_equals(ops.style.background, "");
             });
             test(function() {
-                assert_equals(ops.style.color, "red")
+                assert_equals(ops.style.color, "red");
             });
             test(function() {
-                assert_equals(clonedOps.style.background, "")
+                assert_equals(clonedOps.style.background, "");
             });
             test(function() {
-                assert_equals(violetOps.style.background.match(/rgb\(238, 130, 238\)/)[0], "rgb(238, 130, 238)")
+                assert_equals(violetOps.style.background.match(/rgb\(238, 130, 238\)/)[0], "rgb(238, 130, 238)");
             });
             test(function() {
-                assert_equals(window.getComputedStyle(clonedOps).background, window.getComputedStyle(ops).background)
+                assert_equals(window.getComputedStyle(clonedOps).background, window.getComputedStyle(ops).background);
             });
             test(function() {
-                assert_equals(window.getComputedStyle(clonedOps).color, window.getComputedStyle(ops).color)
+                assert_equals(window.getComputedStyle(clonedOps).color, window.getComputedStyle(ops).color);
             });
             test(function() {
-                assert_equals(window.getComputedStyle(ops).background, window.getComputedStyle(violetOps).background)
+                assert_equals(window.getComputedStyle(ops).background, window.getComputedStyle(violetOps).background);
             });
             test(function() {
-                assert_equals(window.getComputedStyle(clonedOps).background, window.getComputedStyle(violetOps).background)
+                assert_equals(window.getComputedStyle(clonedOps).background, window.getComputedStyle(violetOps).background);
             });
             test(function() {
-                assert_equals(ops.id, "ops")
+                assert_equals(ops.id, "ops");
             });
             test(function() {
-                assert_equals(ops.id, clonedOps.id)
+                assert_equals(ops.id, clonedOps.id);
             });
         };
-
     </script>
 </head>
 

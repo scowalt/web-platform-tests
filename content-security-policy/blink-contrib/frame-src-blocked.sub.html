@@ -19,10 +19,10 @@
                     t_alert.done();
                 }
                 for (var i = 0; i < expected_alerts.length; i++) {
-                    if (expected_alerts[i] == msg) {
-                        assert_true(expected_alerts[i] == msg);
+                    if (expected_alerts[i] === msg) {
+                        assert_true(expected_alerts[i] === msg);
                         expected_alerts.splice(i, 1);
-                        if (expected_alerts.length == 0) {
+                        if (expected_alerts.length === 0) {
                             t_alert.done();
                         }
                         return;
@@ -46,7 +46,7 @@ frame-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
 
         function loadEvent() {
             loads++;
-            log("PASS " + "IFrame #" + loads + " generated a load event.");
+            log("PASS IFrame #" + loads + " generated a load event.");
         }
 
     </script>

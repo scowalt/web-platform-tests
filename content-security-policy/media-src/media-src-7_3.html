@@ -24,7 +24,7 @@
         }
 
         function media_error_handler(t) {
-            t.step( function () {
+            t.step(function() {
                 assert_unreached("Error handler called for allowed track source.");
             });
             t.done();

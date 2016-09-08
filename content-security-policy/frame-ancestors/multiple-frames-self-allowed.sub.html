@@ -12,9 +12,9 @@ connect-src 'self' 'none'; script-src 'self' 'unsafe-inline'; frame-src 'self';
     <script>
         var startTestCtr = 0;
         function onMessage(event) {
-            if(event.data == "start test") {
+            if (event.data === "start test") {
                 startTestCtr++;
-                if(startTestCtr == 2) {
+                if (startTestCtr === 2) {
                     startTest();
                 }
             } else {

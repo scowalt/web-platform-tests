@@ -21,7 +21,7 @@
             "/media/foo.vtt";
 
         function media_loaded(t) {
-            t.step( function () {
+            t.step(function() {
                 assert_unreached("Disllowed track source loaded.");
             });
             t.done();
@@ -53,9 +53,11 @@
             source_test.set_status(source_test.FAIL);
         });
 
-        setTimeout(function() { 
-            if(source_test.phase != source_test.phases.COMPLETE) {
-                source_test.step( function () { assert_unreached("Onerror event never fired for track element."); });
+        setTimeout(function() {
+            if (source_test.phase !== source_test.phases.COMPLETE) {
+                source_test.step(function() {
+                    assert_unreached("Onerror event never fired for track element.");
+                });
                 source_test.done();
             }
         }, 2 * 1000);

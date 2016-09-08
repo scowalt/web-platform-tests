@@ -17,7 +17,7 @@
 
     <script>
         var src_test = async_test("In-policy async video src");
-        var src_redir_test = async_test("in-policy async video src w/redir")
+        var src_redir_test = async_test("in-policy async video src w/redir");
         var source_test = async_test("In-policy async video source element");
         var source_redir_test = async_test("In-policy async video source element w/redir");
 
@@ -26,7 +26,7 @@
         }
 
         function media_error_handler(t) {
-            t.step( function () {
+            t.step(function() {
                 assert_unreached("Media error handler shouldn't be triggered for allowed domain.");
             });
             t.done();

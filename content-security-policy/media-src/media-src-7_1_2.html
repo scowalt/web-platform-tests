@@ -23,7 +23,7 @@
             "/media/white.mp4";
 
         function media_loaded(t) {
-            t.step(function () {
+            t.step(function() {
                 assert_unreached("Media error handler should be triggered for non-allowed domain.");
             });
             t.done();

@@ -15,7 +15,7 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
 
 <body>
     <script>
-        if (typeof navigator.sendBeacon != 'function') {
+        if (typeof navigator.sendBeacon !== 'function') {
             t_log.set_status(t_log.NOTRUN, "No navigator.sendBeacon, cannot run test.");
             t_log.phase = t_log.phases.HAS_RESULT;
             t_log.done();
@@ -26,7 +26,7 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
             } catch (e) {
                 log("Fail");
             }
-            var report =  document.createElement("script");
+            var report = document.createElement("script");
             report.src = "../support/checkReport.sub.js?reportExists=false";
             report.async = true;
             report.defer = true;

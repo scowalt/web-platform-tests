@@ -3,8 +3,9 @@
 Eval should be blocked in the iframe, but inline script should be allowed.
 <script>
     window.onload = function() {
+        /* eslint no-useless-escape: "off" */
         frames[0].log("<script>alert_assert(/PASS/); eval('alert_assert(/FAIL/);');<\/script>");
         frames[0].document.close();
-    }
+    };
 
 </script>

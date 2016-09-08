@@ -36,15 +36,15 @@ style-src 'self' nonce-noncynonce' 'nonce-noncy+/=nonce'; script-src 'self' 'uns
     <p id="test1">This text should be green.</p>
     <p id="test2">This text should also be green.</p>
     <script>
-        var el = document.querySelector('#test1');
         test(function() {
-            assert_equals(window.getComputedStyle(el).color, "rgb(0, 128, 0)")
-        });
-        var el = document.querySelector('#test2');
-        test(function() {
-            assert_equals(window.getComputedStyle(el).color, "rgb(0, 128, 0)")
+            var el = document.querySelector('#test1');
+            assert_equals(window.getComputedStyle(el).color, "rgb(0, 128, 0)");
         });
 
+        test(function() {
+            var el = document.querySelector('#test2');
+            assert_equals(window.getComputedStyle(el).color, "rgb(0, 128, 0)");
+        });
     </script>
     <p>Style correctly whitelisted via a 'nonce-*' expression in 'style-src' should be applied to the page.</p>
     <div id="log"></div>

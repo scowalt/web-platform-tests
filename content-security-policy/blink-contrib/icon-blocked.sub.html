@@ -7,10 +7,10 @@
         link.href = src;
         document.head.appendChild(link);
     }
-    window.addEventListener('DOMContentLoaded', function() {
-        createLink('icon', 'http://localhost/foo?q=from_icon'); {}
-    });
 
+    window.addEventListener('DOMContentLoaded', function() {
+        createLink('icon', 'http://localhost/foo?q=from_icon');
+    });
 </script>
 <p>Use callbacks to show that favicons are not loaded in violation of CSP when link tags are dynamically added to the page.</p>
 
