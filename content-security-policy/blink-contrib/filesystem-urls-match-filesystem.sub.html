@@ -18,6 +18,8 @@ script-src 'self' 'unsafe-inline' 'unsafe-inline' 'self'; connect-src 'self';
         filesystem: URLs are same-origin with the page in which they were created, but explicitly do not match the &apos;self&apos; or &apos;*&apos; source in CSP directives because they are more akin to 'unsafe-inline' content, but should match filesystem: source.
     </p>
     <script>
+        'use strict';
+
         function pass() {
             log("PASS (1/1)");
         }

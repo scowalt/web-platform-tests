@@ -8,6 +8,8 @@
     <script src="/resources/testharnessreport.js"></script>
     <script src='../support/logTest.sub.js?logs=["PASS IFrame %231 generated a load event."]'></script>
     <script>
+        'use strict';
+
         window.addEventListener("message", function(event) {
             alert_assert(event.data);
         }, false);

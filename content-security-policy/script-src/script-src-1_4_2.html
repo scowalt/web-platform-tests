@@ -9,7 +9,9 @@
     <h1>Function() called as a constructor should throw without 'unsafe-eval' script-src directive.</h1>
     <div id='log'></div>
 
-   	<script>
+    <script>
+        'use strict';
+
         test(function() {
             assert_throws(
                 new EvalError(),

@@ -15,6 +15,8 @@ connect-src 'self'; script-src 'self' 'unsafe-inline';
 
 <body>
     <script>
+        'use strict';
+
         try {
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "http://www1.{{host}}:{{ports[http][0]}}/content-security-policy/support/fail.png", true);
@@ -28,7 +30,6 @@ connect-src 'self'; script-src 'self' 'unsafe-inline';
         } catch (e) {
             log("Pass");
         }
-
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=connect-src%20&apos;self&apos;"></script>

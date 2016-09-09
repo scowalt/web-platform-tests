@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
     var dmTest = async_test("DOM manipulation inline tests");
     var attachPoint = document.getElementById('attachHere');

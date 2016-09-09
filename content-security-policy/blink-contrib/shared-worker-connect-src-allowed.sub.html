@@ -16,6 +16,8 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
 
 <body>
     <script>
+        'use strict';
+
         if (typeof SharedWorker !== 'function') {
             t_alert.set_status(t_alert.NOTRUN, "No SharedWorker, cannot run test.");
             t_alert.phase = t_alert.phases.HAS_RESULT;

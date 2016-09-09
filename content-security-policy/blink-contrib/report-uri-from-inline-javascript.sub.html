@@ -15,11 +15,12 @@ img-src 'none'; report-uri resources/save-report.php?test=report-uri-from-inline
 
 <body>
     <script>
+        'use strict';
+
         // This script block will trigger a violation report.
         var i = document.createElement('img');
         i.src = 'resources/abe.png';
         document.body.appendChild(i);
-
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=img-src%20&apos;none&apos;"></script>

@@ -16,6 +16,8 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' 'unsafe-inline' 127.0.0.1:8000; 
 
 <body>
     <script>
+        'use strict';
+
         window.wasPostTestScriptParsed = true;
         var result = '';
         try {
@@ -34,7 +36,6 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' 'unsafe-inline' 127.0.0.1:8000; 
             });
             log("TEST COMPLETE");
         }
-
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>

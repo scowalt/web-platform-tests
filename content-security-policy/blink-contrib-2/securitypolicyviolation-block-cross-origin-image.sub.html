@@ -15,11 +15,12 @@ img-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
 
 <body>
     <script>
+        'use strict';
+
         var img = document.createElement('img');
         img.src = 'http://{{host}}:{{ports[http][0]}}/security/resources/abe.png';
         document.body.appendChild(img);
         log("TEST COMPLETE");
-
     </script>
     <p>Check that a SecurityPolicyViolationEvent strips detail from cross-origin blocked URLs.</p>
     <div id="log"></div>

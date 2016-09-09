@@ -20,6 +20,8 @@ Content-Security-Policy: img-src 'none'
     style block from the header-supplied policy.</p>
 
     <script>
+        'use strict';
+
         var img = document.createElement('img');
         img.src = '../support/fail.png';
         img.onerror = function() {
@@ -29,7 +31,6 @@ Content-Security-Policy: img-src 'none'
             log("FAIL");
         };
         document.body.appendChild(img);
-
     </script>
     <style>
         body {

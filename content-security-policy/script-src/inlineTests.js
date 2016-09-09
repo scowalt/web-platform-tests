@@ -1,3 +1,5 @@
+'use strict';
+
 var t1 = async_test("Inline script block");
 var t2 = async_test("Inline event handler");
 

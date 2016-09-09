@@ -3,6 +3,8 @@
 <script src="../../../media-resources/video-test.js"></script>
 <p>This test passes if it doesn&apos;t alert failure.</p>
 <script>
+    'use strict';
+
     waitForEvent('loadedmetadata', function() {
         alert_assert('FAIL');
     });

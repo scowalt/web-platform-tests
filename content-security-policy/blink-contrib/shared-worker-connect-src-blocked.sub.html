@@ -22,6 +22,8 @@ connect-src *; script-src 'self' 'unsafe-inline';
     should be sent since the worker's policy doesn't specify
     a report-uri.</p>
     <script>
+        'use strict';
+
         if (typeof SharedWorker !== 'function') {
             t_alert.set_status(t_alert.NOTRUN, "No SharedWorker, cannot run test.");
             t_alert.phase = t_alert.phases.HAS_RESULT;

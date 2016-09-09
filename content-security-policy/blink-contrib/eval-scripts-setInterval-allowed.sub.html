@@ -14,6 +14,8 @@ script-src 'self' 'unsafe-inline' 'unsafe-inline' 'unsafe-eval'; connect-src 'se
 </head>
 <pre>
 <script>
+    'use strict';
+
     /* eslint no-implied-eval: "off" */
     var id_string = setInterval("clearInterval(id_string); alert_assert('PASS 1 of 2')", 0);
     if (id_string === 0)

@@ -1,3 +1,5 @@
+'use strict';
+
 var inlineRan = false;
 
 onload = function() {

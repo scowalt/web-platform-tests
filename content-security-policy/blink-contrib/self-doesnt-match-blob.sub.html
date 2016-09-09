@@ -20,6 +20,8 @@ connect-src 'self'; script-src 'self' 'unsafe-inline'; child-src 'self';
     with this resource.</p>
 <body>
     <script>
+        'use strict';
+
         try {
             var blob = new Blob([
                 "postMessage('FAIL');" +

@@ -1,3 +1,5 @@
+'use strict';
+
 var xhr = new XMLHttpRequest();
 xhr.onerror = function() {
     postMessage("xhr blocked");

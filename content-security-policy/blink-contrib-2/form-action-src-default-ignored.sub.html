@@ -12,6 +12,8 @@
 default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-src 'self'; frame-src 'self';
 -->
     <script>
+        'use strict';
+
         window.addEventListener("message", function(event) {
             log(event.data);
         }, false);

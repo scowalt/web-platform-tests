@@ -21,6 +21,8 @@ script-src 'self' 'nonce-nonceynonce' 'sha256-dWTP4Di8KBjaiXvQ5mRquI9OoBSo921ahY
         against the spec. This test, therefore, validates that the scripts have
         *different* hash values. -->
     <script nonce="nonceynonce">
+        'use strict';
+
         var matchingContent = 'Å';
         var nonMatchingContent = 'Å';
 

@@ -1,3 +1,5 @@
+'use strict';
+
 onconnect = function(event) {
     var port = event.ports[0];
     var xhr = new XMLHttpRequest();

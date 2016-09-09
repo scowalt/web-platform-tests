@@ -21,6 +21,8 @@ connect-src 'self'; script-src 'self' 'unsafe-inline' blob:;
     with this resource.</p>
 <body>
     <script>
+        'use strict';
+
         try {
             var blob = new Blob([
                 "var xhr = new XMLHttpRequest;" +
@@ -56,7 +58,6 @@ connect-src 'self'; script-src 'self' 'unsafe-inline' blob:;
         } catch (e) {
             alert_assert(e);
         }
-
     </script>
     <div id="log"></div>
      <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=connect-src%20&apos;self&apos;"></script>

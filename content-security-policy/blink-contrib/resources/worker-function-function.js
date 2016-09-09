@@ -1,3 +1,5 @@
+'use strict';
+
 var fn = function() {
     postMessage('Function() function blocked');
 };

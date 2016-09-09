@@ -9,7 +9,9 @@
     <h1>setTimeout() and setInterval() should not run without 'unsafe-eval' script-src directive.</h1>
     <div id='log'></div>
 
-   	<script>
+    <script>
+        'use strict';
+
         var t1 = async_test("window.setTimeout()");
         var t2 = async_test("window.setInterval()");
 

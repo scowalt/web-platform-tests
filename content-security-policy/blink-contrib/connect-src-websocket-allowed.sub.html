@@ -15,13 +15,14 @@ connect-src 'self' ws://127.0.0.1:8880; script-src 'self' 'unsafe-inline';
 
 <body>
     <script>
+        'use strict';
+
         try {
             var ws = new WebSocket("ws://127.0.0.1:8880/echo");
             log("Pass");
         } catch (e) {
             log("Fail");
         }
-
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>

@@ -1,3 +1,5 @@
+'use strict';
+
 // note, this template substitution is XSS, but no way to avoid it in this framework
 var expected_logs = {{GET[logs]}};
 var timeout = "{{GET[timeout]}}";

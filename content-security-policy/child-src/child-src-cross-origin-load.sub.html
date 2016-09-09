@@ -8,6 +8,8 @@
     <script src="/resources/testharnessreport.js"></script>
     <script src='../support/logTest.sub.js?logs=["PASS IFrame %231 generated a load event.","PASS IFrame %232 generated a load event.","PASS IFrame %233 generated a load event."]'></script>
     <script>
+        'use strict';
+
         window.addEventListener("message", function(event) {
             alert_assert(event.data);
         }, false);
@@ -35,7 +37,6 @@
                 t_alert.done();
             });
         }
-
     </script>
     <!-- enforcing policy:
 child-src 'self' http://www1.{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe-inline'; connect-src 'self';

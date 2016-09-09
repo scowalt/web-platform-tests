@@ -11,8 +11,10 @@
     <div id='log'></div>
 
     <script>
-      var imgsrc = async_test("Verify cascading of default-src to img-src policy");
-      var onerrorFired = false;
+        'use strict';
+
+        var imgsrc = async_test("Verify cascading of default-src to img-src policy");
+        var onerrorFired = false;
     </script>
 
     <img id='imgfail' src=''

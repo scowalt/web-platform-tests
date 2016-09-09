@@ -1,3 +1,5 @@
+'use strict';
+
 if (typeof aa !== 'undefined') {
     alert_assert(aa);
 } else {

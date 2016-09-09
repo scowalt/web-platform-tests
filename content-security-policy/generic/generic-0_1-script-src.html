@@ -11,9 +11,11 @@
     <div id='log'></div>
 
     <script>
-      var scriptsrc1 = async_test("Verify cascading of default-src to script-src policy: block");
-      var scriptsrc2 = async_test("Verify cascading of default-src to script-src policy: allow");
-      var allowedScriptRan = false;
+        'use strict';
+
+        var scriptsrc1 = async_test("Verify cascading of default-src to script-src policy: block");
+        var scriptsrc2 = async_test("Verify cascading of default-src to script-src policy: allow");
+        var allowedScriptRan = false;
     </script>
 
     <script src='pass-0_1.js'></script>

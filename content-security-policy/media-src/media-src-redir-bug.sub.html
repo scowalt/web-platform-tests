@@ -16,6 +16,8 @@
     the load is blocked. (This test passes in Firefox 45, modulo an event listener not firing.)</p>
 
     <script>
+        'use strict';
+
         var src_test = async_test("In-policy async video src");
         var src_redir_test = async_test("in-policy async video src w/redir");
         var source_test = async_test("In-policy async video source element");

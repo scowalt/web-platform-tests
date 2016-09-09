@@ -1,3 +1,5 @@
+'use strict';
+
 onload = function() {
     test(function() {
         assert_true(true, 'Script ran.');

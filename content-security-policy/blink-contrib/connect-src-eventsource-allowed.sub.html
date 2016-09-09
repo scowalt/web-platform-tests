@@ -15,13 +15,14 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
 
 <body>
     <script>
+        'use strict';
+
         try {
             var es = new EventSource("http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/simple-event-stream");
             log("Pass");
         } catch (e) {
             log("Fail");
         }
-
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>

@@ -24,11 +24,12 @@ style-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
 <body>
     <p id="test">This text should be green.</p>
     <script>
+        'use strict';
+
         var el = document.querySelector('#test');
         test(function() {
             assert_equals(window.getComputedStyle(el).color, "rgb(0, 128, 0)");
         });
-
     </script>
     <p>Style that does not match a 'nonce-*' expression in 'style-src' should not be applied to the page.</p>
     <div id="log"></div>

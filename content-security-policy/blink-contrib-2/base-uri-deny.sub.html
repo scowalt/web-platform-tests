@@ -13,6 +13,8 @@
 base-uri 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
 -->
     <script>
+        'use strict';
+
         var base = document.createElement('base');
         base.href = 'http://www1.{{host}}:{{ports[http][0]}}/';
         document.head.appendChild(base);

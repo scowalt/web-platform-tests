@@ -1,3 +1,5 @@
+'use strict';
+
 document.write("<style>#test1 { display: none; }</style>");
 
 var s = document.createElement('style');

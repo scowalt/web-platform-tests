@@ -10,6 +10,8 @@
 script-src 'nonce-nonce' *; connect-src 'self';
 -->
     <script nonce="nonce">
+        'use strict';
+
         var t1 = async_test('data: URIs should not match *');
         t1.step(function() {
             var script = document.createElement("script");

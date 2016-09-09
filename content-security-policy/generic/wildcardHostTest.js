@@ -1,3 +1,5 @@
+'use strict';
+
 wildcardHostTestRan = false;
 
 onload = function() {

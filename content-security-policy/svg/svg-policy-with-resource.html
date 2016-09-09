@@ -7,6 +7,8 @@
     <script src='../support/logTest.sub.js?logs=["TEST COMPLETE"]'></script>
     <script src="../support/alertAssert.sub.js?alerts=[]"></script>
     <script>
+        'use strict';
+
         window.addEventListener("message", function(event) {
             alert_assert(event.data);
         }, false);

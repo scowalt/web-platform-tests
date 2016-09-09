@@ -16,6 +16,8 @@ connect-src 'self'; script-src 'self' 'unsafe-inline';
 
 <body>
     <script>
+        'use strict';
+
         var es;
         try {
             es = new EventSource("/common/redirect.py?location= http://www.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/simple-event-stream");
@@ -30,7 +32,6 @@ connect-src 'self'; script-src 'self' 'unsafe-inline';
             log("PASS EventSource() did not follow the disallowed redirect.");
             log("TEST COMPLETE");
         };
-
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=connect-src%20&apos;self&apos;/security/contentSecurityPolicy/resources/redir.php"></script>

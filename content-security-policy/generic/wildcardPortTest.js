@@ -1,3 +1,5 @@
+'use strict';
+
 wildcardPortTestRan = false;
 
 onload = function() {

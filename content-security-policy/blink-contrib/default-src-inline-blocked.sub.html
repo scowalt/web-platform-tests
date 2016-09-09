@@ -14,10 +14,11 @@ default-src 'self'; connect-src 'self';
 <body>
     This test passes if the inline scripts don't create failing tests and a CSP report is sent.
     <script>
+        'use strict';
+
         test(function() {
             assert_unreached('FAIL inline script ran');
         });
-
     </script>
     <script src="resources/document-write-alert-fail.js"></script>
     <div id="log"></div>

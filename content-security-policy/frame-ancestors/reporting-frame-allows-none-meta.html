@@ -6,6 +6,8 @@
 <body>
     <p>Reporting Frame...</p>
     <script>
+        'use strict';
+
         function onMessage(event) {
             var p = document.createElement('p');
             p.textContent = event.data;

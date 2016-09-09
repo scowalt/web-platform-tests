@@ -6,11 +6,13 @@
     <script src='/resources/testharnessreport.js'></script>
     <script src='negativeTests.js'></script>
     <script>
-      var head = document.getElementsByTagName('head')[0];
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = "http://www." + location.hostname + ":" + location.port + "/content-security-policy/generic/unreached.js";
-      head.appendChild(script);
+        'use strict';
+
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = "http://www." + location.hostname + ":" + location.port + "/content-security-policy/generic/unreached.js";
+        head.appendChild(script);
     </script>
 </head>
 <body>

@@ -15,8 +15,9 @@ style-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-src
 
 <body style="background-color: blue;">
     <script>
-        log(document.body.style.length > 0 ? 'FAIL' : 'PASS');
+        'use strict';
 
+        log(document.body.style.length > 0 ? 'FAIL' : 'PASS');
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=style-src%20&apos;none&apos;"></script>

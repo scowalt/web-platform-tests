@@ -16,6 +16,8 @@ object-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
 
 <body>
     <script>
+        'use strict';
+
         var len = navigator.mimeTypes.length;
         var allTypes = "";
         var appletMimeType = "application/x-java-applet";
@@ -31,7 +33,6 @@ object-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
             s.src = "../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=object-src%20&apos;none&apos;";
             document.body.appendChild(s);
         }
-
     </script>
     This test passes if there is a CSP violation saying the plugin was blocked.
     <applet code="code.class" codebase="/plugins/codebase/"></applet>

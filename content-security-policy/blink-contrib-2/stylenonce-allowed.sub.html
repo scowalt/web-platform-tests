@@ -36,6 +36,8 @@ style-src 'self' nonce-noncynonce' 'nonce-noncy+/=nonce'; script-src 'self' 'uns
     <p id="test1">This text should be green.</p>
     <p id="test2">This text should also be green.</p>
     <script>
+        'use strict';
+
         test(function() {
             var el = document.querySelector('#test1');
             assert_equals(window.getComputedStyle(el).color, "rgb(0, 128, 0)");

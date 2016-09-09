@@ -16,8 +16,9 @@ style-src *; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-src 'sel
 
 <body>
     <script>
-        log(document.styleSheets.length > 0 ? 'PASS' : 'FAIL');
+        'use strict';
 
+        log(document.styleSheets.length > 0 ? 'PASS' : 'FAIL');
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>

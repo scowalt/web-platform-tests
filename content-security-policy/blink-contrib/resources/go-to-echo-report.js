@@ -1,3 +1,5 @@
+'use strict';
+
 if (window.testRunner) {
     testRunner.dumpAsText();
     testRunner.waitUntilDone();

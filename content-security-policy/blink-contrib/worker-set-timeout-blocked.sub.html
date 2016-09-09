@@ -16,6 +16,8 @@ script-src 'self' 'unsafe-inline' 'self' 'unsafe-inline'; connect-src 'self';
 
 <body>
     <script>
+        'use strict';
+
         try {
             var worker = new Worker('http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/worker-set-timeout.js');
             worker.onmessage = function(event) {
@@ -24,7 +26,6 @@ script-src 'self' 'unsafe-inline' 'self' 'unsafe-inline'; connect-src 'self';
         } catch (e) {
             alert_assert(e);
         }
-
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
