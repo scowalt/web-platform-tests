@@ -25,10 +25,10 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
             try {
                 var worker = new SharedWorker('http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/shared-worker-make-xhr-allowed.sub.js');
                 worker.port.onmessage = function(event) {
-                    alert_assert(event.data);
+                    log(event.data);
                 };
             } catch (e) {
-                alert_assert(e);
+                log(e);
             }
             var report = document.createElement("script");
             report.src = "../support/checkReport.sub.js?reportExists=false";

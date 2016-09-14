@@ -20,10 +20,10 @@ script-src 'self' 'unsafe-inline'; connect-src 'self';
         try {
             var foo = new Worker('http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/post-message.js');
             foo.onmessage = function(event) {
-                alert_assert("PASS");
+                log("PASS");
             };
         } catch (e) {
-            alert_assert(e);
+            log(e);
         }
     </script>
     <div id="log"></div>

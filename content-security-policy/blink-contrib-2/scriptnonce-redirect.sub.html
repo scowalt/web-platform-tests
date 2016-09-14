@@ -19,7 +19,7 @@
         var t_alert = async_test('Expecting alerts: ["PASS"]');
         var expected_alerts = ["PASS"];
 
-        function alert_assert(msg) {
+        function log(msg) {
             t_alert.step(function() {
                 if (msg.match(/^FAIL/i)) {
                     assert_unreached(msg);

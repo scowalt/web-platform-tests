@@ -6,7 +6,7 @@
     'use strict';
 
     waitForEvent('loadedmetadata', function() {
-        alert_assert('FAIL');
+        log('FAIL');
     });
     addEventListener('load', endTestLater, false);
     // Find a supported media file.

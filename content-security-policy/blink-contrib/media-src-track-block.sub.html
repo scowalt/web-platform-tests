@@ -13,11 +13,11 @@ media-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
         'use strict';
 
         function loaded() {
-            alert_assert("FAIL");
+            log("FAIL");
         }
 
         function errored() {
-            alert_assert("PASS");
+            log("PASS");
         }
 
         function start() {

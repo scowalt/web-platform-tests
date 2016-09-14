@@ -8,7 +8,7 @@ if (timeout === "") {
 }
 
 if (expected_alerts.length === 0) {
-    window.alert_assert = function(msg) {
+    window.log = function(msg) {
         test(function() {
             assert_unreached(msg);
         });
@@ -23,7 +23,7 @@ if (expected_alerts.length === 0) {
             t_alert.done();
         }
     }, timeout * 100);
-    var alert_assert = function(msg) {
+    var log = function(msg) {
         t_alert.step(function() {
             if (msg && msg instanceof Error) {
                 msg = msg.message;

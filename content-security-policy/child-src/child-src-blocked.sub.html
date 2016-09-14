@@ -11,10 +11,10 @@
         'use strict';
 
         window.addEventListener("message", function(event) {
-            alert_assert(event.data);
+            log(event.data);
         }, false);
 
-        function alert_assert(msg) {
+        function log(msg) {
             t_log.step(function() {
                 if (msg.match(/^FAIL/i)) {
                     assert_unreached(msg);

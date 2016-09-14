@@ -13,26 +13,26 @@ script-src 'self' 'sha256-IFmozo9WnnsMXVl/Ka8XzJ3Nd8yzS2zA2ME0mwtd+Ck=' 'sha256-
     <script>
         'use strict';
 
-        alert_assert('PASS (1/4)');
+        log('PASS (1/4)');
 
     </script>
     <script>
-        alert_assert('PASS (2/4)');
+        log('PASS (2/4)');
 
     </script>
     <script>
-        alert_assert('PASS (3/4)');
+        log('PASS (3/4)');
 
     </script>
     <script>
-        alert_assert('PASS (4/4)');
+        log('PASS (4/4)');
 
     </script>
 </head>
 
 <body>
     <p>
-        This tests the effect of a valid script-hash value. It passes if no CSP violation is generated, and the alert_assert() is executed.
+        This tests the effect of a valid script-hash value. It passes if no CSP violation is generated, and the log() is executed.
     </p>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>

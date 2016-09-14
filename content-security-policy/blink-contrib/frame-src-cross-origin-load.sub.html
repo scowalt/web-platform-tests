@@ -11,13 +11,13 @@
         'use strict';
 
         window.addEventListener("message", function(event) {
-            alert_assert(event.data);
+            log(event.data);
         }, false);
 
         var t_alert = async_test('Expecting alerts: ["PASS","PASS"]');
         var expected_alerts = ["PASS", "PASS"];
 
-        function alert_assert(msg) {
+        function log(msg) {
             t_alert.step(function() {
                 if (msg.match(/^FAIL/i)) {
                     assert_unreached(msg);

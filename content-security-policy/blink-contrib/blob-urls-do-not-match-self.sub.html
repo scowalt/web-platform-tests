@@ -20,7 +20,7 @@ script-src 'self' 'unsafe-inline'; connect-src 'self'; child-src 'self';
         'use strict';
 
         function fail() {
-            alert_assert("FAIL!");
+            log("FAIL!");
         }
         var b = new Blob(['fail();'], {
             type: 'application/javascript'

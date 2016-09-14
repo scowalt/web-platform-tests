@@ -14,13 +14,13 @@ script-src 'self' 'unsafe-inline' 'unsafe-inline'; script-src 'none'; connect-sr
     <script>
         'use strict';
 
-        alert_assert('PASS (1/1)');
+        log('PASS (1/1)');
     </script>
 </head>
 
 <body>
     <p>
-        This tests the effect of duplicated directives. It passes if the alert_assert() is executed.
+        This tests the effect of duplicated directives. It passes if the log() is executed.
     </p>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>

@@ -1,3 +1,3 @@
 'use strict';
 
-alert_assert("PASS");
+log("PASS");

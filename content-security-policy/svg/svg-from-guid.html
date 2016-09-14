@@ -9,7 +9,7 @@
         'use strict';
 
         window.addEventListener("message", function(event) {
-            alert_assert(event.data);
+            log(event.data);
         }, false);
         window.addEventListener('load', function() {
             setTimeout(function() {
