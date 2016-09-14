@@ -20,11 +20,11 @@
     <img id='imgfail' src=''
          onload='imgsrc.step(function() { assert_unreached("Image load was not blocked."); });'
          onerror='onerrorFired = true;'>
-    <img src='../support/pass.png'
+    <img src='/images/green.png'
          onload='imgsrc.step(function() { assert_true(true, "Image load was blocked."); });'>
 
     <script>
-        document.getElementById('imgfail').src = buildSiblingPath('www1', '../support/fail.png');
+        document.getElementById('imgfail').src = buildSiblingPath('www1', '/images/red.png');
         onload = function() {
             imgsrc.step(function() {
                 assert_true(onerrorFired, "onerror handler for blocked img didn't fire");

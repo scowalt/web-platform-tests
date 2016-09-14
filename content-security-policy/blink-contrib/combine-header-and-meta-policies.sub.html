@@ -22,7 +22,7 @@ Content-Security-Policy: img-src 'none'
         'use strict';
 
         var img = document.createElement('img');
-        img.src = '../support/fail.png';
+        img.src = '/images/red.png';
         img.onerror = function() {
             log_test("TEST COMPLETE");
         };

@@ -17,7 +17,7 @@ img-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
         'use strict';
 
         var img = document.createElement('img');
-        img.src = '../support/fail.png';
+        img.src = '/images/red.png';
         img.onerror = function() {
             log_test("TEST COMPLETE");
         };

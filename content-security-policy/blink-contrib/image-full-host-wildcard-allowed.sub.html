@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
     <title>image-full-host-wildcard-allowed</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
@@ -11,11 +9,8 @@
 img-src http://*.{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-src 'self';
 -->
 </head>
-
 <body>
-    <img src="http://www1.{{host}}:{{ports[http][0]}}/content-security-policy/support/pass.png" onload="log_test(this.width == 168 ? 'PASS' : 'FAIL')">
-    <div id="log"></div>
+    <img src="http://www1.{{host}}:{{ports[http][0]}}/images/green.png" onload="log_test(this.width == 100 ? 'PASS' : 'FAIL')">
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
 </body>
-
 </html>

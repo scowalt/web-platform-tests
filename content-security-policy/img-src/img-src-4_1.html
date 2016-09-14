@@ -18,11 +18,11 @@
         var t3 = async_test("img-src from approved domains should load");
     </script>
 
-    <img src='/content-security-policy/support/pass.png'
+    <img src='/images/green.png'
     onerror='t1.step(function() { assert_unreached("The img should have loaded."); t1.done() });'
     onload='t1.done();'>
 
-    <img src='http://www1.web-platform.test/content-security-policy/support/fail.png'
+    <img src='http://www1.web-platform.test/images/red.png'
     onerror='t2.done();'
     onload='t2.step(function() { assert_unreached("Image from unapproved domain was loaded."); t2.done()} );'>
 
@@ -40,7 +40,7 @@
             t3.done();
         };
         t3img.src = location.protocol + '//www.' + location.hostname + ':' + location.port +
-        '/content-security-policy/support/pass.png';
+        '/images/green.png';
         var t3div = document.getElementById('t3');
         t3div.appendChild(t3img);
 
