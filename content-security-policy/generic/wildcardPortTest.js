@@ -1,9 +1,9 @@
 'use strict';
 
-wildcardPortTestRan = false;
+window.wildcardPortTestRan = false;
 
 onload = function() {
     test(function() {
-        assert_true(wildcardPortTestRan, 'Script should have ran.');
+        assert_true(window.wildcardPortTestRan, 'Script should have ran.');
     }, "Wildcard port matching works.");
 };

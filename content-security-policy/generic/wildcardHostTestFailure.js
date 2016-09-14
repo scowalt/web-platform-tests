@@ -1,9 +1,9 @@
 'use strict';
 
-wildcardHostTestRan = false;
+window.wildcardHostTestRan = false;
 
 onload = function() {
     test(function() {
-        assert_false(wildcardHostTestRan, 'Script should not have ran.');
+        assert_false(window.wildcardHostTestRan, 'Script should not have ran.');
     }, "Wildcard host matching works.");
 };
