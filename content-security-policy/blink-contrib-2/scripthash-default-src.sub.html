@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
     <title>script-hash allowed from default-src</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    
+    <script src='/content-security-policy/support/logTest.sub.js?logs=["PASS"]'></script>
+    <!-- enforcing policy:
+default-src 'self' 'sha256-TsSn7HPAyA+frjjMiILYRhDwr9lpLS7CiYSqtH+hYaQ='
+-->
     <script>
         'use strict';
-        
-        done();
+    
+        log_test('PASS');
     </script>
-    </head>
-
-    <body>
-    <div id="log"></div>
+</head>
+<body>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
-    </body>
+</body>
 </html>

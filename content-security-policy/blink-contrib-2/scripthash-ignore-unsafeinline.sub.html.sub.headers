@@ -3,4 +3,4 @@ Cache-Control: no-store, no-cache, must-revalidate
 Cache-Control: post-check=0, pre-check=0, false
 Pragma: no-cache
 Set-Cookie: scripthash-ignore-unsafeinline={{$id:uuid()}}; Path=/content-security-policy/blink-contrib-2
-Content-Security-Policy: script-src 'self' unsafe-inline' 'sha256-DMJSM5+yELMQCAp0nRihKSpXnyHsaZml4bXUF8O28Ig=' 'sha256-EgE/bwVJ+ZLL9F5hNjDqD4C7nlFFrdDaKeNIJ2cUem4='; connect-src 'self'; report-uri /content-security-policy/support/report.py?op=put&reportID={{$id}}
+Content-Security-Policy: script-src 'self' unsafe-inline' 'sha256-LppU9E9RpJaPzruoIpsv9iTbL4m7+/tdTnhZ0FH+lg0='; connect-src 'self'; report-uri /content-security-policy/support/report.py?op=put&reportID={{$id}}

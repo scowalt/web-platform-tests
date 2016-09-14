@@ -1,43 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
     <title>frame-src-cross-origin-load</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <script src='../support/logTest.sub.js?logs=["PASS IFrame %231 generated a load event.","PASS IFrame %232 generated a load event.","PASS IFrame %233 generated a load event."]'></script>
+    <script src='../support/logTest.sub.js?logs=["PASS", "PASS"]'></script>
     <script>
         'use strict';
 
         window.addEventListener("message", function(event) {
             log_test(event.data);
         }, false);
-
-        var t_alert = async_test('Expecting alerts: ["PASS","PASS"]');
-        var expected_alerts = ["PASS", "PASS"];
-
-        function log_test(msg) {
-            t_alert.step(function() {
-                if (msg.match(/^FAIL/i)) {
-                    assert_unreached(msg);
-                    t_alert.done();
-                }
-                for (var i = 0; i < expected_alerts.length; i++) {
-                    if (expected_alerts[i] === msg) {
-                        assert_true(expected_alerts[i] === msg);
-                        expected_alerts.splice(i, 1);
-                        if (expected_alerts.length === 0) {
-                            t_alert.done();
-                        }
-                        return;
-                    }
-                }
-                assert_unreached('unexpected alert: ' + msg);
-                t_alert.done();
-            });
-        }
-
     </script>
     <!-- enforcing policy:
 frame-src 'self' http://www1.{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe-inline'; connect-src 'self';
@@ -46,23 +20,34 @@ frame-src 'self' http://www1.{{host}}:{{ports[http][0]}}; script-src 'self' 'uns
         IFrames blocked by CSP should generate a 'load', not 'error' event, regardless of blocked state. This means they appear to be normal cross-origin loads, thereby not leaking URL information directly to JS.
     </p>
     <script>
-        window.wasPostTestScriptParsed = true;
-        var loads = 0;
+        'use strict';
+    
+        const loadEventTest1 = async_test('Allowed <iframe> #1 must generate a load event');
 
-        function loadEvent() {
-            loads++;
-            log_test("PASS IFrame #" + loads + " generated a load event.");
+        // Invoked by the <iframe> 'onload' callback below to complete the loadEventTest1.
+        function loadEvent1() {
+            loadEventTest1.done();
         }
+    
+        const loadEventTest2 = async_test('Allowed <iframe> #2 must generate a load event');
 
+        // Invoked by the <iframe> 'onload' callback below to complete the loadEventTest2.
+        function loadEvent2() {
+            loadEventTest2.done();
+        }
+        
+        const loadEventTest3 = async_test('Blocked <iframe> must generate a load event');
+
+        // Invoked by the <iframe> 'onload' callback below to complete the loadEventTest3.
+        function loadEvent3() {
+            loadEventTest3.done();
+        }
     </script>
 </head>
-
 <body>
-    <iframe src="resources/postmessage-pass.html" onload="loadEvent()"></iframe>
-    <iframe src="http://www1.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/postmessage-pass.html" onload="loadEvent()"></iframe>
-    <iframe src="http://www2.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/postmessage-fail.html" onload="loadEvent()" onerror="log_test('FAIL')"></iframe>
-    <div id="log"></div>
+    <iframe src="resources/postmessage-pass.html" onload="loadEvent1()"></iframe>
+    <iframe src="http://www1.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/postmessage-pass.html" onload="loadEvent2()"></iframe>
+    <iframe src="http://www2.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/postmessage-fail.html" onload="loadEvent3()" onerror="log_test('FAIL')"></iframe>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=frame-src%20&apos;self&apos;http://www1.{{host}}:{{ports[http][0]}}"></script>
 </body>
-
 </html>

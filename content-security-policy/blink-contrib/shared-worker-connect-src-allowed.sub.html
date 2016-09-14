@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
     <title>shared-worker-connect-src-allowed</title>
@@ -10,17 +9,13 @@
     <!-- enforcing policy:
 connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe-inline';
 -->
-
 </head>
-
 <body>
     <script>
         'use strict';
 
         if (typeof SharedWorker !== 'function') {
-            t_alert.set_status(t_alert.NOTRUN, "No SharedWorker, cannot run test.");
-            t_alert.phase = t_alert.phases.HAS_RESULT;
-            t_alert.done();
+            skip_log_test("No SharedWorker, cannot run test.");
         } else {
             try {
                 var worker = new SharedWorker('http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/shared-worker-make-xhr-allowed.sub.js');
@@ -37,7 +32,5 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
             document.body.appendChild(report);
         }
     </script>
-    <div id="log"></div>
 </body>
-
 </html>

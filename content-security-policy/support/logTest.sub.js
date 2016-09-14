@@ -13,8 +13,15 @@ if (expected_logs.length === 0) {
             assert_unreached(msg);
         });
     };
+
+    window.skip_log_test = () => {
+        test(function() {
+            assert_unreached("Must not call 'skip_log_test()' when no logs are expected.");
+        });
+    };
 } else {
     var t_log = async_test('Expecting logs: {{GET[logs]}}');
+
     setTimeout(function() {
         if (t_log.phase !== t_log.phases.COMPLETE) {
             t_log.step(function() {
@@ -23,6 +30,7 @@ if (expected_logs.length === 0) {
             t_log.done();
         }
     }, timeout * 1000);
+
     window.log_test = function(msg) {
         // cons/**/ole.log(msg);
         t_log.step(function() {
@@ -43,5 +51,11 @@ if (expected_logs.length === 0) {
             assert_unreached('unexpected log: ' + msg);
             t_log.done();
         });
+    };
+
+    window.skip_log_test = (reason) => {
+        t_log.set_status(t_log.NOTRUN, "No SharedWorker, cannot run test.");
+        t_log.phase = t_log.phases.HAS_RESULT;
+        t_log.done();
     };
 }
