@@ -16,7 +16,7 @@ style-src 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-inline'; co
     <script>
         'use strict';
 
-        log(document.body.style.length > 0 ? 'PASS' : 'FAIL');
+        log_test(document.body.style.length > 0 ? 'PASS' : 'FAIL');
     </script>
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>

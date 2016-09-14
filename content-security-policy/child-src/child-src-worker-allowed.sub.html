@@ -19,10 +19,10 @@ child-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-src
         try {
             var foo = new Worker('http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/post-message.js');
             foo.onmessage = function(event) {
-                log("PASS");
+                log_test("PASS");
             };
         } catch (e) {
-            log(e);
+            log_test(e);
         }
     </script>
     <div id="log"></div>

@@ -9,7 +9,7 @@
     <script nonce="noncynonce">
         'use strict';
 
-        function log(msg) {
+        function log_test(msg) {
             test(function() {
                 assert_unreached(msg);
             });
@@ -20,7 +20,7 @@
         var t_alert = async_test('Expecting alerts: ["PASS (1/2)","PASS (2/2)"]');
         var expected_alerts = ["PASS (1/2)", "PASS (2/2)"];
 
-        function log(msg) {
+        function log_test(msg) {
             t_alert.step(function() {
                 if (msg.match(/^FAIL/i)) {
                     assert_unreached(msg);
@@ -46,11 +46,11 @@
 script-src 'self' 'unsafe-inline' 'nonce-noncynonce' 'nonce-noncy+/=nonce'; connect-src 'self';
 -->
     <script nonce="noncynonce">
-        log('PASS (1/2)');
+        log_test('PASS (1/2)');
 
     </script>
     <script nonce="noncy+/=nonce">
-        log('PASS (2/2)');
+        log_test('PASS (2/2)');
 
     </script>
 </head>

@@ -18,9 +18,9 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
 
         try {
             var es = new EventSource("http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/simple-event-stream");
-            log("Pass");
+            log_test("Pass");
         } catch (e) {
-            log("Fail");
+            log_test("Fail");
         }
     </script>
     <div id="log"></div>

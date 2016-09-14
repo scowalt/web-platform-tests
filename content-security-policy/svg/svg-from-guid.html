@@ -9,11 +9,11 @@
         'use strict';
 
         window.addEventListener("message", function(event) {
-            log(event.data);
+            log_test(event.data);
         }, false);
         window.addEventListener('load', function() {
             setTimeout(function() {
-                log("TEST COMPLETE");
+                log_test("TEST COMPLETE");
             }, 1);
         });
     </script>

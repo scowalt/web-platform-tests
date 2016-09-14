@@ -19,9 +19,9 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
         try {
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "http://{{host}}:{{ports[http][0]}}/xmlhttprequest/resources/get.txt", true);
-            log("Pass");
+            log_test("Pass");
         } catch (e) {
-            log("Fail");
+            log_test("Fail");
         }
     </script>
     <div id="log"></div>

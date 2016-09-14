@@ -19,15 +19,15 @@
             var img = document.createElement('img');
             img.src = '../support/fail.png';
             img.onerror = function() {
-                log("PASS");
+                log_test("PASS");
             };
             img.onload = function() {
-                log("FAIL");
+                log_test("FAIL");
             };
             document.body.appendChild(img);
         }
         testImgSrc();
-        log("TEST COMPLETE");
+        log_test("TEST COMPLETE");
     </script>
     <div id="log"></div>
 </body>

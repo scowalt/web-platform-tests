@@ -13,7 +13,7 @@ img-src *; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-src 'self'
 </head>
 
 <body>
-    <img src="../support/pass.png" onload="log(this.width == 168 ? 'PASS' : 'FAIL')">
+    <img src="../support/pass.png" onload="log_test(this.width == 168 ? 'PASS' : 'FAIL')">
     <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
 </body>

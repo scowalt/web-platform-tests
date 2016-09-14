@@ -6,7 +6,7 @@ xhr.onerror = function() {
     postMessage("TEST COMPLETE");
 };
 xhr.onload = function() {
-    // cons/**/ole.log(xhr.responseText);
+    // cons/**/ole.log_test(xhr.responseText);
     if (xhr.responseText === "FAIL") {
         postMessage("xhr allowed");
     } else {

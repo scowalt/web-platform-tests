@@ -24,10 +24,10 @@ Content-Security-Policy: img-src 'none'
         var img = document.createElement('img');
         img.src = '../support/fail.png';
         img.onerror = function() {
-            log("TEST COMPLETE");
+            log_test("TEST COMPLETE");
         };
         img.onload = function() {
-            log("FAIL");
+            log_test("FAIL");
         };
         document.body.appendChild(img);
     </script>

@@ -9,7 +9,7 @@
     <script nonce="noncynonce">
         'use strict';
 
-        function log(msg) {
+        function log_test(msg) {
             test(function() {
                 assert_unreached(msg);
             });
@@ -19,7 +19,7 @@
         var t_alert = async_test('Expecting alerts: ["PASS"]');
         var expected_alerts = ["PASS"];
 
-        function log(msg) {
+        function log_test(msg) {
             t_alert.step(function() {
                 if (msg.match(/^FAIL/i)) {
                     assert_unreached(msg);

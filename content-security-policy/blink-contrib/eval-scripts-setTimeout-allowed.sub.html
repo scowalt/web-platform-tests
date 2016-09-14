@@ -17,14 +17,14 @@ script-src 'self' 'unsafe-inline' 'unsafe-inline' 'unsafe-eval'; connect-src 'se
 
     /* eslint no-implied-eval: "off" */
     test(function() {
-        var id = setTimeout("log('PASS 1 of 2')", 0);
+        var id = setTimeout("log_test('PASS 1 of 2')", 0);
         if (id === 0)
-            log('FAIL: Return value for string (should not be 0): ' + id);
+            log_test('FAIL: Return value for string (should not be 0): ' + id);
     });
 
     test(function() {
         var id = setTimeout(function() {
-            log('PASS 2 of 2');
+            log_test('PASS 2 of 2');
         }, 0);
         if (id === 0)
             document.write('FAIL: Return value for function (should not be 0): ' + id);

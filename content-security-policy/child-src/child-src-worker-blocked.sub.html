@@ -20,13 +20,13 @@ child-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-src
             var foo = new Worker('http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/post-message.js');
             foo.onerror = function(event) {
                 event.preventDefault();
-                log("PASS");
+                log_test("PASS");
             };
             foo.onmessage = function(event) {
-                log("FAIL");
+                log_test("FAIL");
             };
         } catch (e) {
-            log("PASS");
+            log_test("PASS");
         }
     </script>
     <div id="log"></div>

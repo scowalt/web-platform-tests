@@ -22,7 +22,7 @@ base-uri http://www1.{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe-inli
                 assert_equals(document.baseURI, 'http://www1.{{host}}:' + port + '/');
             }
 
-            log("TEST COMPLETE");
+            log_test("TEST COMPLETE");
         });
 
     </script>

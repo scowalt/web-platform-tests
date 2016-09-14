@@ -19,7 +19,7 @@ img-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
         var script = document.createElement('script');
         script.src = '../support/inject-image.js';
         document.body.appendChild(script);
-        log("TEST COMPLETE");
+        log_test("TEST COMPLETE");
     </script>
     <p>Check that a SecurityPolicyViolationEvent is fired upon blocking an image injected via script.</p>
     <div id="log"></div>

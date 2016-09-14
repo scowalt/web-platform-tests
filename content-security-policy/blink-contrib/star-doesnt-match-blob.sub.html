@@ -29,17 +29,17 @@ connect-src 'self'; script-src 'self' 'unsafe-inline'; child-src *;
             var url = URL.createObjectURL(blob);
             var worker = new Worker(url);
             worker.onmessage = function(event) {
-                log(event.data);
+                log_test(event.data);
             };
             worker.onerror = function(event) {
                 event.preventDefault();
-                log('TEST COMPLETE');
+                log_test('TEST COMPLETE');
             };
         } catch (e) {
-            log('TEST COMPLETE');
+            log_test('TEST COMPLETE');
         }
         function timeout() {
-            log('TEST COMPLETE');
+            log_test('TEST COMPLETE');
         }
     </script>
     <div id="log"></div>

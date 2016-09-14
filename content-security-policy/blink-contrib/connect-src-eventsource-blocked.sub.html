@@ -22,18 +22,18 @@ connect-src 'self'; script-src 'self' 'unsafe-inline';
             if (es.readyState === EventSource.CONNECTING) {
                 setTimeout(function() {
                     if (es.readyState !== EventSource.CLOSED) {
-                        log("Fail");
+                        log_test("Fail");
                     } else {
-                        log("Pass");
+                        log_test("Pass");
                     }
                 }, 2);
             } else if (es.readyState === EventSource.CLOSED) {
-                log("Pass");
+                log_test("Pass");
             } else {
-                log("Fail");
+                log_test("Fail");
             }
         } catch (e) {
-            log("Pass");
+            log_test("Pass");
         }
     </script>
     <div id="log"></div>

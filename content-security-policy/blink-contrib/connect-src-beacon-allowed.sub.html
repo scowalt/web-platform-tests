@@ -23,9 +23,9 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
         } else {
             try {
                 var es = navigator.sendBeacon("http://{{host}}:{{ports[http][0]}}/cors/resources/status.py");
-                log("Pass");
+                log_test("Pass");
             } catch (e) {
-                log("Fail");
+                log_test("Fail");
             }
             var report = document.createElement("script");
             report.src = "../support/checkReport.sub.js?reportExists=false";

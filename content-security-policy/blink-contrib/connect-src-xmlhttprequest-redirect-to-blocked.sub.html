@@ -21,20 +21,20 @@ connect-src 'self'; script-src 'self' 'unsafe-inline';
         try {
             xhr.open("GET", "/common/redirect.py?location=http://www1.{{host}}:{{ports[http][0]}}/content-security-policy/support/fail.asis", true);
         } catch (e) {
-            log("FAIL XMLHttpRequest.open() should not throw an exception.");
+            log_test("FAIL XMLHttpRequest.open() should not throw an exception.");
         }
         xhr.onload = function() {
-            // cons/**/ole.log(xhr.responseText);
+            // cons/**/ole.log_test(xhr.responseText);
             if (xhr.responseText === "FAIL") {
-                log("FAIL XMLHttpRequest.send() should fail to follow the disallowed redirect.");
+                log_test("FAIL XMLHttpRequest.send() should fail to follow the disallowed redirect.");
             } else {
-                log("PASS XMLHttpRequest.send() did not follow the disallowed redirect.");
+                log_test("PASS XMLHttpRequest.send() did not follow the disallowed redirect.");
             }
-            log("TEST COMPLETE");
+            log_test("TEST COMPLETE");
         };
         xhr.onerror = function() {
-            log("PASS XMLHttpRequest.send() did not follow the disallowed redirect.");
-            log("TEST COMPLETE");
+            log_test("PASS XMLHttpRequest.send() did not follow the disallowed redirect.");
+            log_test("TEST COMPLETE");
         };
         xhr.send();
     </script>

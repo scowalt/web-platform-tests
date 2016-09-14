@@ -19,9 +19,9 @@ script-src 'self' 'unsafe-inline' 'self'; report-uri resources/save-report.php?t
         try {
             /* eslint no-eval: "off" */
 
-            eval("log('FAIL')");
+            eval("log_test('FAIL')");
         } catch (e) {
-            log('PASS: eval() blocked.');
+            log_test('PASS: eval() blocked.');
         }
     </script>
     <div id="log"></div>

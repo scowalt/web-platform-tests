@@ -34,7 +34,7 @@ object-src 'none'; script-src 'self' 'unsafe-inline'; connect-src 'self';
         }
     </script>
     This test passes if there is a CSP violation saying the plugin was blocked.
-    <applet code="TestThingie" archive="/plugins/archive.jar" id="appletObject" onload="log('FAIL')" onerror="log('PASS')"></applet>
+    <applet code="TestThingie" archive="/plugins/archive.jar" id="appletObject" onload="log_test('FAIL')" onerror="log_test('PASS')"></applet>
     <div id="log"></div>
 </body>
 

@@ -13,7 +13,7 @@
         var t_alert = async_test('Expecting alerts: ["PASS (1/1)"]');
         var expected_alerts = ["PASS (1/1)"];
 
-        function log(msg) {
+        function log_test(msg) {
             t_alert.step(function() {
                 if (msg.match(/^FAIL/i)) {
                     assert_unreached(msg);
@@ -39,11 +39,11 @@
 script-src 'self' 'unsafe-inline' 'sha1-Au4uYFbkf7OYd+ACMnKq96FN3qo=' 'unsafe-inline'; connect-src 'self';
 -->
     <script>
-        log('PASS (1/1)');
+        log_test('PASS (1/1)');
 
     </script>
     <script>
-        log('FAIL (1/1)');
+        log_test('FAIL (1/1)');
 
     </script>
 </head>

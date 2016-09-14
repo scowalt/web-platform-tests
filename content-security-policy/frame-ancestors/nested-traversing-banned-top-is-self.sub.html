@@ -15,7 +15,7 @@ connect-src 'self' 'none'; script-src 'self' 'unsafe-inline'; frame-src 'self';
             if (event.data === "start test") {
                 startTest();
             } else {
-                log(event.data);
+                log_test(event.data);
             }
         }
 
@@ -29,7 +29,7 @@ connect-src 'self' 'none'; script-src 'self' 'unsafe-inline'; frame-src 'self';
         }
 
         function done() {
-            log("PASS");
+            log_test("PASS");
         }
         setTimeout(done(), 1);
     </script>

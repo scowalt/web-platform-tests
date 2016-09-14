@@ -8,7 +8,7 @@ if (timeout === "") {
 }
 
 if (expected_logs.length === 0) {
-    window.log = function(msg) {
+    window.log_test = function(msg) {
         test(function() {
             assert_unreached(msg);
         });
@@ -23,7 +23,7 @@ if (expected_logs.length === 0) {
             t_log.done();
         }
     }, timeout * 1000);
-    window.log = function(msg) {
+    window.log_test = function(msg) {
         // cons/**/ole.log(msg);
         t_log.step(function() {
             if (msg.match(/^FAIL/i)) {

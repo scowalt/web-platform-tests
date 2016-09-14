@@ -30,17 +30,17 @@ connect-src 'self'; script-src 'self' 'unsafe-inline'; child-src 'self';
             var url = URL.createObjectURL(blob);
             var worker = new Worker(url);
             worker.onmessage = function(event) {
-                log(event.data);
+                log_test(event.data);
             };
             worker.onerror = function(event) {
-                log('TEST COMPLETE');
+                log_test('TEST COMPLETE');
                 event.preventDefault();
             };
         } catch (e) {
-            log('TEST COMPLETE');
+            log_test('TEST COMPLETE');
         }
         function timeout() {
-            log('TEST COMPLETE');
+            log_test('TEST COMPLETE');
         }
     </script>
     <div id="log"></div>

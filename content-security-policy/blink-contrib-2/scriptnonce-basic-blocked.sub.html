@@ -13,19 +13,19 @@ script-src 'self' 'unsafe-inline' 'nonce-noncynonce'; connect-src 'self';
     <script nonce="noncynonce">
         'use strict';
 
-        log('PASS (closely-quoted nonce)');
+        log_test('PASS (closely-quoted nonce)');
     </script>
     <script nonce="   noncynonce    ">
-        log('PASS (nonce w/whitespace)');
+        log_test('PASS (nonce w/whitespace)');
     </script>
     <script nonce="noncynonce noncynonce">
-        log('FAIL (1/3)');
+        log_test('FAIL (1/3)');
     </script>
     <script>
-        log('FAIL (2/3)');
+        log_test('FAIL (2/3)');
     </script>
     <script nonce="noncynonceno?">
-        log('FAIL (3/3)');
+        log_test('FAIL (3/3)');
     </script>
 </head>
 

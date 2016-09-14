@@ -26,14 +26,14 @@ script-src 'self' 'unsafe-inline' 'unsafe-eval' 'unsafe-inline' 127.0.0.1:8000; 
                 test(function() {
                     assert_equals(result, 'importScripts blocked');
                 });
-                log("TEST COMPLETE");
+                log_test("TEST COMPLETE");
             };
         } catch (e) {
             result = e;
             test(function() {
                 assert_equals(result, 'importScripts blocked');
             });
-            log("TEST COMPLETE");
+            log_test("TEST COMPLETE");
         }
     </script>
     <div id="log"></div>

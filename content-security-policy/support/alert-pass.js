@@ -1,3 +1,3 @@
 'use strict';
 
-log("PASS");
+log_test("PASS");

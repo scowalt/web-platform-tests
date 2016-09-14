@@ -20,10 +20,10 @@ script-src 'self' 'unsafe-inline' 'self' 'unsafe-inline'; connect-src 'self';
         try {
             var worker = new Worker('http://{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/worker-set-timeout.js');
             worker.onmessage = function(event) {
-                log(event.data);
+                log_test(event.data);
             };
         } catch (e) {
-            log(e);
+            log_test(e);
         }
     </script>
     <div id="log"></div>

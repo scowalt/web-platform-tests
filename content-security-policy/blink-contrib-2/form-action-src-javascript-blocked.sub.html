@@ -16,14 +16,14 @@ form-action 'none'; script-src 'self' 'nonce-noncynonce'; connect-src 'self';
         window.addEventListener('load', function() {
             setTimeout(function() {
                 document.getElementById('submit').click();
-                log("TEST COMPLETE");
+                log_test("TEST COMPLETE");
             }, 0);
         });
     </script>
 </head>
 
 <body>
-    <form action="javascript:log(&quot;FAIL!&quot;)" id="theform" method="post">
+    <form action="javascript:log_test(&quot;FAIL!&quot;)" id="theform" method="post">
         <input type="text" name="fieldname" value="fieldvalue">
         <input type="submit" id="submit" value="submit">
     </form>

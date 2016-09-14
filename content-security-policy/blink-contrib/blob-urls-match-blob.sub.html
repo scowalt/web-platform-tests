@@ -20,7 +20,7 @@ script-src 'self' 'unsafe-inline' blob:; connect-src 'self';
         'use strict';
 
         function pass() {
-            log("PASS (1/1)");
+            log_test("PASS (1/1)");
         }
         var b = new Blob(['pass();'], {
             type: 'application/javascript'

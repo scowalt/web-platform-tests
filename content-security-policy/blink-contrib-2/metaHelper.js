@@ -1,7 +1,7 @@
 'use strict';
 
 if (typeof aa !== 'undefined') {
-    log(aa);
+    log_test(aa);
 } else {
-    log("Failed - allowed inline script blocked by meta policy outside head.");
+    log_test("Failed - allowed inline script blocked by meta policy outside head.");
 }
