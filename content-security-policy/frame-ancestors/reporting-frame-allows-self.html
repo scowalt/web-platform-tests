@@ -2,22 +2,10 @@
 <html>
 <body>
     <p>Reporting Frame...</p>
+    <script src='reporting-frame.js'></script>
     <script>
         'use strict';
 
-        function onMessage(event) {
-            var p = document.createElement('p');
-            p.textContent = event.data;
-            document.body.appendChild(p);
-            window.parent.postMessage(event.data, "*");
-        }
-        
-        window.addEventListener(
-            "message",
-            onMessage,
-            false
-        );
-        
         window.parent.postMessage("start test", "*");
     </script>
 </body>

@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
     <title>connect-src-eventsource-blocked</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <script src='../support/logTest.sub.js?logs=["Pass"]'></script>
     <!-- enforcing policy:
 connect-src 'self'; script-src 'self' 'unsafe-inline';
 -->
 </head>
-
 <body>
     <script>
         'use strict';
 
-        try {
-            var es = new EventSource("http://www1.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/simple-event-stream");
-            // Firefox doesn't throw an exception and takes some time to close async
-            if (es.readyState === EventSource.CONNECTING) {
-                setTimeout(function() {
-                    if (es.readyState !== EventSource.CLOSED) {
-                        log_test("Fail");
-                    } else {
-                        log_test("Pass");
-                    }
-                }, 2);
-            } else if (es.readyState === EventSource.CLOSED) {
-                log_test("Pass");
-            } else {
-                log_test("Fail");
+        // https://w3c.github.io/webappsec-csp/#directive-connect-src
+        async_test((test) => {
+            let es;
+
+            try {
+                es = new EventSource("http://www1.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/simple-event-stream");
+            } catch (e) {
+                // Ch53 throws a SECURITY_ERR
+                assert_equals(e.code, DOMException.SECURITY_ERR,
+                    'Error must be a SECURITY_ERR.');
+                test.done();
             }
-        } catch (e) {
-            log_test("Pass");
-        }
+
+            // FF48 asynchronously closes the connection.
+            const poll_for_closed = () => {
+                if (es.readyState === EventSource.CLOSED) {
+                    test.done();
+                } else {
+                    requestAnimationFrame(poll_for_closed);
+                }
+            };
+
+            poll_for_closed();
+        });
     </script>
-    <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=connect-src%20&apos;self&apos;"></script>
 </body>
-
 </html>

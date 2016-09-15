@@ -4,18 +4,14 @@
     <title>svg-policy-with-resource</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <script src='../support/logTest.sub.js?logs=["TEST COMPLETE"]'></script>
+    <script src='../support/logTest.sub.js?logs=[]'></script>
+    <script src='../support/setup-frame-test.js'></script>
     <script>
         'use strict';
 
-        window.addEventListener("message", function(event) {
-            log_test(event.data);
-        }, false);
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                log_test("TEST COMPLETE");
-            }, 0);
-        });
+        promise_test(test => {
+            return setup_frame_test(test, /* numFrames = */ 0);
+        }, "Ensure no messages are received from child frames.");
     </script>
 </head>
 

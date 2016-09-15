@@ -8,35 +8,20 @@
     <!-- enforcing policy:
 connect-src 'self' 'none'; script-src 'self' 'unsafe-inline'; frame-src 'self';
 -->
+    <script src='../support/setup-frame-test.js'></script>
     <script>
         'use strict';
 
-        var startTestCtr = 0;
-        function onMessage(event) {
-            if (event.data === "start test") {
-                startTestCtr++;
-                if (startTestCtr === 2) {
-                    startTest();
-                }
-            } else {
-                log_test(event.data);
-            }
-        }
-
-        window.addEventListener(
-            "message",
-            onMessage,
-            false);
-
-        function startTest() {
-            window.frames['frame1'].postMessage("hello frame1", "*");
-            window.frames['frame2'].postMessage("hello frame2", "*");
-        }
+        promise_test(test => {
+            return setup_frame_test(test, /* numFrames = */ 2).then(() => {
+                window.frames['frame1'].postMessage("hello frame1", "*");
+                window.frames['frame2'].postMessage("hello frame2", "*");
+            });
+        }, "Await 'start-test' notifications from child frames.");
     </script>
 </head>
 <body>
     <iframe src='http://{{host}}:{{ports[http][0]}}/content-security-policy/frame-ancestors/reporting-frame-allows-self.html' name="frame1"></iframe>
-        <iframe src='http://{{host}}:{{ports[http][0]}}/content-security-policy/frame-ancestors/reporting-frame-allows-none-meta.html' name="frame2"></iframe>
-    <div id="log"></div>
+    <iframe src='http://{{host}}:{{ports[http][0]}}/content-security-policy/frame-ancestors/reporting-frame-allows-none-meta.html' name="frame2"></iframe>
 </body>
 </html>

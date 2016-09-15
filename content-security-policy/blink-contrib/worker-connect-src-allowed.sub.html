@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
     <title>worker-connect-src-allowed</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <script src='../support/logTest.sub.js?logs=["xhr allowed"]'></script>
+    <script src='../support/logTest.sub.js?logs=["xhr allowed", "TEST COMPLETE"]'></script>
     <!-- enforcing policy:
 connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe-inline';
 -->
-
 </head>
-
 <body>
     <script>
         'use strict';
@@ -26,8 +22,6 @@ connect-src 'self' http://{{host}}:{{ports[http][0]}}; script-src 'self' 'unsafe
             log_test(e);
         }
     </script>
-    <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
 </body>
-
 </html>

@@ -1,82 +1,95 @@
-'use strict';
-
 (function() {
-    // Get values from the substitution engine.
-    // We can't just pull these from the document context
-    // because this script is intended to be transcluded into
-    // another document, and we want the GET values used to request it,
-    // not the values for the including document
+    'use strict';
 
-    // These are unencoded, so there's an unavoidable
-    // injection vulnerability in constructing this file...
-    // need to upgrade the template engine.
-    var reportField = "{{GET[reportField]}}";
-    var reportValue = "{{GET[reportValue]}}";
-    var reportExists = "{{GET[reportExists]}}";
-    var noCookies = "{{GET[noCookies]}}";
+    // Note: We rely on wptserve substitution to embed the query parameters of the <script> src URL
+    //       used to import this file.  (We do not use the current document, as that would instead
+    //       return the query parameters of the test page.)
+    //
+    // Danger: The query parameters are unencoded, so technically, this constitutes an injection
+    //         vulnerability.
 
-    var location = window.location;
-    var thisTestName = location.pathname.split('/')[location.pathname.split('/').length - 1].split('.')[0];
+    const reportField = "{{GET[reportField]}}";
+    const reportValue = "{{GET[reportValue]}}";
+    const reportExists = "{{GET[reportExists]}}" !== 'false';
+    const noCookies = "{{GET[noCookies]}}";
 
-    var reportID = "";
+    const location = window.location;
+    const timeout = document.querySelector("meta[name=timeout][content=long]") ? 50 : 5;
 
-    var cookies = document.cookie.split(';');
+    let reportID;
+
+    const thisTestName = location.pathname.split('/')[location.pathname.split('/').length - 1].split('.')[0];
+    const cookiePath = document.location.pathname.substring(0, document.location.pathname.lastIndexOf('/') + 1);
+    const cookies = document.cookie.split(';');
     for (var i = 0; i < cookies.length; i++) {
-        var cookieName = cookies[i].split('=')[0].trim();
-        var cookieValue = cookies[i].split('=')[1].trim();
+        const nameValuePair = cookies[i].split('='); 
+        const cookieName = nameValuePair[0].trim();
+        const cookieValue = nameValuePair[1].trim();
 
         if (cookieName === thisTestName) {
-            reportID = cookieValue;
-            var cookieToDelete = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=" + document.location.pathname.substring(0, document.location.pathname.lastIndexOf('/') + 1);
+            const cookieToDelete = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=" + cookiePath;
             document.cookie = cookieToDelete;
+            reportID = cookieValue;
             break;
         }
     }
 
-    var timeout = document.querySelector("meta[name=timeout][content=long]") ? 50 : 5;
-    var reportLocation = location.protocol + "//" + location.host + "/content-security-policy/support/report.py?op=take&timeout=" + timeout + "&reportID=" + reportID;
+    const reportLocation = location.protocol + "//" + location.host + "/content-security-policy/support/report.py?op=take&timeout=" + timeout + "&reportID=" + reportID;
 
-    var reportTest = async_test("Violation report status OK.");
-    reportTest.step(function() {
-        var report = new XMLHttpRequest();
-        report.onload = reportTest.step_func(function() {
-            var data = JSON.parse(report.responseText);
+    async_test((test) => {
+        // If 'logTest.sub.js' was loaded, it implicitly awaits the violation report results before
+        // completing log_tests.  Ensure that 'logTest.sub.js' will be notified that we've verified
+        // the log, and that it should go ahead and complete.
+        test.add_cleanup(() => {
+            if (typeof window.log_ready !== 'undefined') {
+                window.log_ready();
+            }
+        });
+
+        const report = new XMLHttpRequest();
+        report.onload = test.step_func(() => {
+            const data = JSON.parse(report.responseText);
 
             if (data.error) {
-                assert_equals("false", reportExists, data.error);
-            } else {
-                if (reportExists !== "" && reportExists === "false" && data["csp-report"]) {
-                    assert_unreached("CSP report sent, but not expecting one: " + JSON.stringify(data["csp-report"]));
-                }
-          // Firefox expands 'self' or origins in a policy to the actual origin value
-          // so "www.example.com" becomes "http://www.example.com:80".
-          // Accomodate this by just testing that the correct directive name
-          // is reported, not the details...
+                assert_false(reportExists, `Test Error: '/support/report.py' must return expected violation report. (Error: '${data.error}')`);
+                test.done();
+                return;
+            } 
 
-                if (data["csp-report"] !== undefined && data["csp-report"][reportField] !== undefined) {
-                    assert_true(data["csp-report"][reportField].indexOf(reportValue.split(" ")[0]) !== -1,
+            assert_true(reportExists, 'User agent must not report a policy violation when none was exected.');
+
+            // Firefox expands 'self' or origins in a policy to the actual origin value
+            // so "www.example.com" becomes "http://www.example.com:80".
+            // Accomodate this by just testing that the correct directive name
+            // is reported, not the details...
+
+            if (data["csp-report"] !== undefined && data["csp-report"][reportField] !== undefined) {
+                assert_true(data["csp-report"][reportField].indexOf(reportValue.split(" ")[0]) !== -1,
                 reportField + " value of  \"" + data["csp-report"][reportField] + "\" did not match " +
                 reportValue.split(" ")[0] + ".");
-                }
             }
 
-            reportTest.done();
+            test.done();
         });
 
         report.open("GET", reportLocation, true);
         report.send();
-    });
+    }, reportExists
+        ? `User agent must report expected ${reportField}: '${reportValue}'.`
+        : 'User agent must not report a policy violation.');
 
     if (noCookies) {
-        var cookieTest = async_test("No cookies sent with report.");
-        var cookieReport = new XMLHttpRequest();
-        cookieReport.onload = cookieTest.step_func(function() {
-            var data = JSON.parse(cookieReport.responseText);
-            assert_equals(data.reportCookies, "None");
-            cookieTest.done();
-        });
-        var cReportLocation = location.protocol + "//" + location.host + "/content-security-policy/support/report.py?op=cookies&timeout=" + timeout + "&reportID=" + reportID;
-        cookieReport.open("GET", cReportLocation, true);
-        cookieReport.send();
+        async_test((test) => {
+            const cookieReport = new XMLHttpRequest();
+            cookieReport.onload = test.step_func(() => {
+                const data = JSON.parse(cookieReport.responseText);
+                assert_equals(data.reportCookies, "None");
+                test.done();
+            });
+
+            const cReportLocation = location.protocol + "//" + location.host + "/content-security-policy/support/report.py?op=cookies&timeout=" + timeout + "&reportID=" + reportID;
+            cookieReport.open("GET", cReportLocation, true);
+            cookieReport.send();
+        }, "No cookies sent with report.");
     }
-})();
+}());
