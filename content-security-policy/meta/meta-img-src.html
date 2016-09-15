@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta id="meta_csp" http-equiv="Content-Security-Policy" content="img-src 'none'">
-    <title>meta-img-src</title>
+    <title>meta-modified</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <script src='../support/logTest.sub.js?logs=["PASS","TEST COMPLETE"]'></script>
 </head>
-
 <body>
-<p>Test passes if the image is blocked.</p>
-
+    <p>Test passes if the image is blocked both before and after policy modification.</p>
     <script>
         'use strict';
 
-        function testImgSrc() {
-            var img = document.createElement('img');
-            img.src = '/images/red.png';
-            img.onerror = function() {
-                log_test("PASS");
-            };
-            img.onload = function() {
-                log_test("FAIL");
-            };
-            document.body.appendChild(img);
+        // Inserts a new <img> into the document and returns a Promise that is fulfilled
+        // if the <img> is correctly blocked, as determined by the <img>'s onerror callback.' 
+        function testBlockedImage() {
+            return new Promise((accept, reject) => {
+                const img = document.createElement('img');
+                img.src = '/images/red.png';
+                img.onerror = () => {
+                    accept();
+                };
+                img.onload = () => {
+                    reject("Blocked <img> must not invoke 'onload' callback.");
+                };
+                document.body.appendChild(img);
+            });
         }
-        testImgSrc();
-        log_test("TEST COMPLETE");
-    </script>
-    <div id="log"></div>
-</body>
 
+        promise_test((test) => {
+            return testBlockedImage();
+        }, '<img> must be blocked by policy in <meta> tag in <head>.');
+
+        promise_test((test) => {
+            document.getElementById("meta_csp").setAttribute("content", "img-src *");
+
+            return testBlockedImage();
+        }, 'Modifying the <meta> tag must not change effective policy.');
+
+        promise_test((test) => {
+            document.getElementById("meta_csp").remove();
+
+            return testBlockedImage();
+        }, 'Removing the <meta> tag must not change effective policy.');
+    </script>
+</body>
 </html>
