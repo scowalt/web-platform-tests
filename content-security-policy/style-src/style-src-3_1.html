@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -23,9 +23,11 @@
     <script>
         'use strict';
 
+        <div id='test_fixture'></div>
+
         test(function() {
-            var logEl = document.getElementById("log");
-            var marginLeftVal = getComputedStyle(logEl).getPropertyValue('margin-left');
+            var el = document.getElementById("test_fixture");
+            var marginLeftVal = getComputedStyle(el).getPropertyValue('margin-left');
             assert_false(marginLeftVal === "200px");
         }, "Inline style should not be applied");
     </script>

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,13 +13,13 @@
         @import stylesheet should not be loaded
         if its URL doesn't match style-src.
     </h1>
-
+    <div id='test_fixture'></div>
     <script>
         'use strict';
 
         test(function() {
-            var logEl = document.getElementById("log");
-            var marginLeftVal = getComputedStyle(logEl).getPropertyValue('margin-left');
+            var el = document.getElementById("test_fixture");
+            var marginLeftVal = getComputedStyle(el).getPropertyValue('margin-left');
             assert_false(marginLeftVal === "200px");
         }, "@import stylesheet should not be applied");
     </script>
