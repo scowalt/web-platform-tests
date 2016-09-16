@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
+    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncrasies.-->
     <title>scriptnonce-allowed</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
@@ -21,10 +21,12 @@ script-src 'self' 'unsafe-inline' 'nonce-noncynonce' 'nonce-noncy+/=nonce'; conn
         log_test('PASS (2/2)');
     </script>
 </head>
+
 <body>
     <p>
         This tests the effect of a valid script-nonce value. It passes if no CSP violation is generated and the alerts are executed.
     </p>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
 </body>
+
 </html>

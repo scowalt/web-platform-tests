@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <title>data: as script src should not run with a policy that doesn't specify data: as an allowed source</title>
     <script src='/resources/testharness.js'></script>
     <script src='/resources/testharnessreport.js'></script>
 </head>
+
 <body>
     <h1>data: as script src should not run with a policy that doesn't specify data: as an allowed source</h1>
 
@@ -25,4 +27,5 @@
 
     <script async defer src='../support/checkReport.sub.js?reportField=violated-directive&reportValue=default-src%20%27self%27+%27unsafe-inline%27'></script>
 </body>
+
 </html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta id="meta_csp" http-equiv="Content-Security-Policy" content="img-src 'none'">
     <title>meta-modified</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
 </head>
+
 <body>
     <p>Test passes if the image is blocked both before and after policy modification.</p>
     <script>
@@ -44,4 +46,5 @@
         }, 'Removing the <meta> tag must not change effective policy.');
     </script>
 </body>
+
 </html>

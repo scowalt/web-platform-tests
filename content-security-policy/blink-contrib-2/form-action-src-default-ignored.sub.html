@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncrasies.-->
     <title>form-action-src-default-ignored</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
@@ -20,6 +22,7 @@ default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-s
         });
     </script>
 </head>
+
 <body>
     <iframe name="test_target" id="test_iframe"></iframe>
 
@@ -30,4 +33,5 @@ default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-s
     <p>Tests that default-src does not cascade to form-action.</p>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
 </body>
+
 </html>

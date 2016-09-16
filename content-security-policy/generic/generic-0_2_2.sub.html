@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <title>'self' fails with a different port</title>
     <script src='/resources/testharness.js'></script>
@@ -15,9 +16,11 @@
         head.appendChild(script);
     </script>
 </head>
+
 <body>
     <h1>'self' fails with a different port</h1>
 
     <script async defer src='../support/checkReport.sub.js?reportField=violated-directive&reportValue=script-src%20%27self%27%20%27unsafe-inline%27'></script>
 </body>
+
 </html>

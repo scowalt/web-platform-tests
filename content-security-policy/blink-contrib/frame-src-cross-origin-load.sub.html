@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
+    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncrasies.-->
     <title>frame-src-cross-origin-load</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
@@ -44,10 +45,12 @@ frame-src 'self' http://www1.{{host}}:{{ports[http][0]}}; script-src 'self' 'uns
         }
     </script>
 </head>
+
 <body>
     <iframe src="resources/postmessage-pass.html" onload="loadEvent1()"></iframe>
     <iframe src="http://www1.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/postmessage-pass.html" onload="loadEvent2()"></iframe>
     <iframe src="http://www2.{{host}}:{{ports[http][0]}}/content-security-policy/blink-contrib/resources/postmessage-fail.html" onload="loadEvent3()" onerror="log_test('FAIL')"></iframe>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=frame-src%20&apos;self&apos;http://www1.{{host}}:{{ports[http][0]}}"></script>
 </body>
+
 </html>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncrasies.-->
     <title>scripthash-allowed</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
@@ -29,10 +31,12 @@ script-src 'self' 'sha256-IFmozo9WnnsMXVl/Ka8XzJ3Nd8yzS2zA2ME0mwtd+Ck=' 'sha256-
         log_test('PASS (4/4)');
     </script>
 </head>
+
 <body>
     <p>
         This tests the effect of a valid script-hash value. It passes if no CSP violation is generated, and the log_test() is executed.
     </p>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
 </body>
+
 </html>

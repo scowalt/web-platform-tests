@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncrasies.-->
     <title>form-action-src-allowed</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
@@ -20,6 +22,7 @@ form-action 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
         });
     </script>
 </head>
+
 <body>
     <iframe name="test_target" id="test_iframe"></iframe>
 
@@ -32,4 +35,5 @@ form-action 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
         with GET and a redirect.</p>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
 </body>
+
 </html>

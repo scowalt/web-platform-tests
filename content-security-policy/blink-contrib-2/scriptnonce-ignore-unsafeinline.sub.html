@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncrasies.-->
     <title>scriptnonce-ignore-unsafeinline</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
@@ -26,10 +28,12 @@ script-src 'self' 'unsafe-inline' 'nonce-noncynonce' 'nonce-noncy+/=nonce' 'unsa
         log_test('FAIL (1/1)');
     </script>
 </head>
+
 <body>
     <p>
         This tests that a valid nonce disables inline JavaScript, even if &apos;unsafe-inline&apos; is present.
     </p>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=script-src%20&apos;nonce-noncynonce&apos;%20&apos;nonce-noncy+/=nonce&apos;%20&apos;unsafe-inline&apos;"></script>
 </body>
+
 </html>

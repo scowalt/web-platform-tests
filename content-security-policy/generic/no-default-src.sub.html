@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <title>no default src doesn't behave exactly like *</title>
     <script src='/resources/testharness.js'></script>
@@ -9,6 +10,7 @@
     <!-- enforcing policy: foobar; report-uri ...
     -->
 </head>
+
 <body>
     <h1>no default src doesn't behave exactly like *</h1>
     This page has a CSP header but an unknown directive.
@@ -25,4 +27,5 @@
 
     <script async defer src='../support/checkReport.sub.js?reportExists=false'></script>
 </body>
+
 </html>

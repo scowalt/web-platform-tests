@@ -12,7 +12,7 @@ Content-Security-Policy: img-src 'none'
 <html>
 
 <head>
-    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
+    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncrasies.-->
     <meta http-equiv="Content-Security-Policy" content="img-src 'none'">
     <title>combine-multiple-policies</title>
     <script src="/resources/testharness.js"></script>

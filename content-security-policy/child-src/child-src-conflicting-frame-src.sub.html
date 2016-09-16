@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>child-src-conflicting-frame-src</title>
     <script src="/resources/testharness.js"></script>
@@ -31,8 +32,10 @@ frame-src 'none'; child-src 'self'; script-src 'self' 'unsafe-inline'; connect-s
         }
     </script>
 </head>
+
 <body>
     <iframe src="/content-security-policy/blink-contrib/resources/postmessage-fail.html" onload="loadEvent()" onerror="log_test('FAIL')"></iframe>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=frame-src%20&apos;none&apos;"></script>
 </body>
+
 </html>
