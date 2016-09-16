@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
     <title>form-action-src-allowed</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <script src='../support/logTest.sub.js?logs=["PASS","TEST COMPLETE"]'></script>
+    <script src='../support/logTest.sub.js?logs=["CLICKED","PASS"]'></script>
     <!-- enforcing policy:
 form-action 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
 -->
@@ -17,15 +15,11 @@ form-action 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
             log_test(event.data);
         }, false);
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('submit').click();
-                log_test("TEST COMPLETE");
-            }, 0);
+            document.getElementById('submit').click();
+            log_test("CLICKED");
         });
-
     </script>
 </head>
-
 <body>
     <iframe name="test_target" id="test_iframe"></iframe>
 
@@ -37,6 +31,5 @@ form-action 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
     <p>Tests that allowed form actions work correctly
         with GET and a redirect.</p>
     <script async defer src="../support/checkReport.sub.js?reportExists=false"></script>
-    </body>
-
+</body>
 </html>

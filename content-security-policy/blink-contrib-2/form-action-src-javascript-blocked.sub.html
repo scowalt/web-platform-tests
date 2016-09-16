@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Programmatically converted from a WebKit Reftest, please forgive resulting idiosyncracies.-->
     <title>form-action-src-javascript-blocked</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <script src='../support/logTest.sub.js?logs=["TEST COMPLETE"]'></script>
+    <script src='../support/logTest.sub.js?logs=["CLICKED"]'></script>
     <!-- enforcing policy:
 form-action 'none'; script-src 'self' 'nonce-noncynonce'; connect-src 'self';
 -->
@@ -14,14 +13,11 @@ form-action 'none'; script-src 'self' 'nonce-noncynonce'; connect-src 'self';
         'use strict';
 
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('submit').click();
-                log_test("TEST COMPLETE");
-            }, 0);
+            document.getElementById('submit').click();
+            log_test("CLICKED");
         });
     </script>
 </head>
-
 <body>
     <form action="javascript:log_test(&quot;FAIL!&quot;)" id="theform" method="post">
         <input type="text" name="fieldname" value="fieldvalue">
@@ -30,5 +26,4 @@ form-action 'none'; script-src 'self' 'nonce-noncynonce'; connect-src 'self';
     <p>Tests that blocking form actions works correctly. If this test passes, a CSP violation will be generated, and will not see a JavaScript alert.</p>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&reportField=violated-directive&reportValue=form-action 'none'"></script>
 </body>
-
 </html>

@@ -6,7 +6,7 @@
     <title>form-action-src-redirect-blocked</title>
     <script src="/resources/testharness.js"></script>
     <script src="/resources/testharnessreport.js"></script>
-    <script src='../support/logTest.sub.js?logs=["TEST COMPLETE"]'></script>
+    <script src='../support/logTest.sub.js?logs=["CLICKED"]'></script>
     <!-- enforcing policy:
 form-action 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
 -->
@@ -17,13 +17,9 @@ form-action 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self';
             log_test(event.data);
         }, false);
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('submit').click();
-                log_test("TEST COMPLETE");
-            }, 0);
+            document.getElementById('submit').click();
+            log_test("CLICKED");
         });
-        setTimeout(function() {}, 1000);
-
     </script>
 </head>
 

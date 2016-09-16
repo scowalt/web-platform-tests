@@ -15,16 +15,18 @@
         var t2 = async_test("window.setInterval()");
 
         onload = function() {
-            t1.done();
-            t2.done();
+            // Defer completing the test in case 'load' is raised prior to the next scheduled timers.
+            requestAnimationFrame(() => {
+                t1.done();
+                t2.done();
+            });
         };
 
         /* eslint no-implied-eval: "off" */
-        window.setTimeout('t1.step(function() {assert_unreached("window.setTimeout() ran without unsafe-eval.")})', 0);
-        window.setInterval('t2.step(function() {assert_unreached("window.setInterval() ran without unsafe-eval.")})', 0);
+        window.setTimeout('t1.step(function() { assert_unreached("window.setTimeout() ran without unsafe-eval."); })', 0);
+        window.setInterval('t2.step(function() { assert_unreached("window.setInterval() ran without unsafe-eval."); })', 0);
     </script>
 
     <script async defer src='../support/checkReport.sub.js?reportField=violated-directive&reportValue=script-src%20%27self%27+%27unsafe-eval%27'></script>
-
 </body>
 </html>
