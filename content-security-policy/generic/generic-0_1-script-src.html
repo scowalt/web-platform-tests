@@ -8,7 +8,6 @@
 </head>
 <body>
     <h1>default-src should cascade to script-src directive</h1>
-    <div id='log'></div>
 
     <script>
         'use strict';
@@ -21,9 +20,11 @@
     <script src='pass-0_1.js'></script>
 
     <script>
+        'use strict';
+    
         var inlineScript = document.createElement('script');
         inlineScript.src = buildSiblingPath('www1', 'fail-0_1.js');
-        document.getElementById('log').appendChild(inlineScript);
+        document.body.appendChild(inlineScript);
         onload = function() {
             scriptsrc1.done();
             scriptsrc2.step(function() {

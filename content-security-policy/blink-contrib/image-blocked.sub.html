@@ -15,7 +15,6 @@ img-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-inline'; connect-src '
 <body>
     This test passes if it doesn&apos;t alert FAIL and does alert PASS.
     <img src="/images/green.png" onload='log_test("FAIL")' onerror='log_test("PASS")'>
-    <div id="log"></div>
     <script async defer src="../support/checkReport.sub.js?reportExists=true&amp;reportField=violated-directive&amp;reportValue=img-src%20&apos;none&apos;"></script>
 </body>
 
